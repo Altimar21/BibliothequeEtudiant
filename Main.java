@@ -8,8 +8,9 @@ public class Main {
 	
 	public Main() {
 
-		Bibliotheque bibliotheque = new Bibliotheque();
-		
+		Bibliotheque bibliotheque;
+		bibliotheque = new Bibliotheque();
+
 		String nomFich="save.ser";
 		
 		/*---------------------------------------------------------------------------------------------
