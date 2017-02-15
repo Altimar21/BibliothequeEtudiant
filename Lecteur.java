@@ -14,12 +14,12 @@ public class Lecteur implements Serializable
 		//Attributs
 	// -----------------------------------------------
 	
-		private String _nom;
-		private String _prenom;
-		private Integer _numLecteur;
+		private String fName;
+		private String lName;
+		private Integer numReader;
 		private GregorianCalendar _dateNaiss;
-		private String _adresse;
-		private String _tel;
+		private String adress;
+		private String tel;
 	
 	
 	
@@ -27,16 +27,16 @@ public class Lecteur implements Serializable
 		//Constructeur
 	// -----------------------------------------------
 		
-		public Lecteur(String nom, String prenom, Integer numLecteur, GregorianCalendar dateNaiss, String adresse, String tel)
+		public Lecteur(String fName, String lName, Integer numReader, GregorianCalendar dateNaiss, String adress, String tel)
 		{
-			this.setNom(nom);
-			this.setPrenom(prenom);
-			this.setNumLecteur(numLecteur);
+			this.setNom(fName);
+			this.setPrenom(lName);
+			this.setNumLecteur(numReader);
 			this.setDateNaiss(dateNaiss);
-			this.setAdresse(adresse);
+			this.setAdresse(adress);
 			this.setTel(tel);
 		}
-		
+
 // -----------------------------------------------
 	// Public
 // -----------------------------------------------
@@ -46,15 +46,15 @@ public class Lecteur implements Serializable
 		// -----------------------------------------------
 	
 		public String getNom() {
-			return _nom;
+			return fName;
 		}
 
 		public String getPrenom() {
-			return _prenom;
+			return lName;
 		}
 
 		public Integer getNumLecteur() {
-			return _numLecteur;
+			return numReader;
 		}
 		
 		public GregorianCalendar getDateNaiss() {
@@ -62,11 +62,11 @@ public class Lecteur implements Serializable
 		}
 
 		public String getAdresse() {
-			return _adresse;
+			return adress;
 		}
 
 		public String getTel() {
-			return _tel;
+			return tel;
 		}
 		// -----------------------------------------------
 			// Methodes
@@ -75,7 +75,7 @@ public class Lecteur implements Serializable
 		/*
 		 * La m�thode afficherLecteur affiche l'ensemble des informations relatives � un lecteur.
 		 */
-		public void afficherLecteur()
+		public void printReader()
 		{
 			System.out.println("Numero lecteur : " + this.getNumLecteur());
 			System.out.println("Nom et prenom du lecteur: " + this.getNom() + " " + this.getPrenom());
@@ -84,7 +84,7 @@ public class Lecteur implements Serializable
 			System.out.println("Telephone : " + this.getTel());
 			EntreesSorties.afficherMessage("");
 		}
-		
+
 		
 		/*
 		 * la m�thode calculAge permet de d�terminer l'age des lecteurs grace a leur date de naissance
@@ -114,16 +114,16 @@ public class Lecteur implements Serializable
 			//Setters
 		// -----------------------------------------------
 
-		private void setNom(String nom) {
-			this._nom = nom;
+		private void setNom(String fName) {
+			this.fName = fName;
 		}
 
 		private void setPrenom(String prenom) {
-			this._prenom = prenom;
+			this.lName = prenom;
 		}
 		
 		private void setNumLecteur(Integer numLecteur) {
-			this._numLecteur = numLecteur;
+			this.numReader = numLecteur;
 		}
 
 		private void setDateNaiss(GregorianCalendar dateNaiss) {
@@ -131,11 +131,11 @@ public class Lecteur implements Serializable
 		}
 
 		private void setAdresse(String adresse) {
-			this._adresse = adresse;
+			this.adress = adresse;
 		}
 
 		private void setTel(String tel) {
-			this._tel = tel;
+			this.tel = tel;
 		}
 		
 		
