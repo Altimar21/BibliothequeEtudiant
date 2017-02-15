@@ -17,6 +17,7 @@ public void menuPrincipal() {
 		EntreesSorties.afficherMessage("|                   Menu Principal                       |");
 		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
 		EntreesSorties.afficherMessage("| Menu Lecteur : 1                                       |");
+		EntreesSorties.afficherMessage("| Menu Livre : 2                                         |");
 		EntreesSorties.afficherMessage("| Quitter : 0                                            |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menu = EntreesSorties.lireEntier();
@@ -25,6 +26,9 @@ public void menuPrincipal() {
 				case 1 : {
 					this.menuLecteur();
 					break;
+				}
+				case 2:{
+					this.menuBook();
 				}
 				
 				default : {
@@ -66,6 +70,32 @@ public void menuLecteur() {
 	} while (menuLect != 0);	
 }
 
+	public void menuBook() {
+		Integer menuBook;
+		do {
+			EntreesSorties.afficherMessage(" ========================================================");
+			EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
+			EntreesSorties.afficherMessage("| Ajout d'un livre : 1                                   |");
+			EntreesSorties.afficherMessage("| Consulter nb exemplaire : 2                            |");
+			EntreesSorties.afficherMessage("| Retour Menu Principal : 0                              |");
+			EntreesSorties.afficherMessage(" ========================================================");
+			menuBook = EntreesSorties.lireEntier();
+
+			switch (menuBook){
+				case 1 : {
+					//quelquechose
+					break;
+				}
+				case 2 : {
+					//quelquechose
+					break;
+				}
+				default : {
+					break;
+				}
+			}
+		} while (menuBook != 0);
+	}
 	
 }
 
