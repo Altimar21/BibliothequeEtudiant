@@ -30,22 +30,21 @@ public class Livre {
 
     public void PrintCopy(int idCopy){
 
-        for (int i = 0; i <= Copy.size() ;i++){
-            if(Copy.get(i).getIdCopy() == idCopy){
-                Copy.toString();
-            }
-        }
-
+        Copy c = findCopy(idCopy);
+        c.toString();
     }
 
-    private Copy getCopy(int idCopy){
-
+    private Copy findCopy(int idCopy){
         for (int i = 0; i <= Copy.size() ;i++){
             if(Copy.get(i).getIdCopy() == idCopy){
                 return Copy.get(i);
             }
         }
         return null;
+    }
+
+    private Copy getCopy(int idCopy){
+        return findCopy(idCopy);
     }
 
     private void setCopy(boolean borrCopy, Date dateRecep, int idCopy){
