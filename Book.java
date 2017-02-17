@@ -8,7 +8,7 @@ import java.util.Vector;
 public class Book {
 
     private String author;
-    private Date dateRelease;
+    private GregorianCalendar dateRelease;
     private String editor;
     private int numISBN;
     private String title;
@@ -17,7 +17,7 @@ public class Book {
     private int lastIdCopy;
     private Vector<Copy> Copy;
 
-    public Book(String author, Date dateRelease, String editor, int numISBN, String title, Publiclec publicc) {
+    public Book(String author, GregorianCalendar dateRelease, String editor, int numISBN, String title, Publiclec publicc) {
         this.author = author;
         this.dateRelease = dateRelease;
         this.editor = editor;
