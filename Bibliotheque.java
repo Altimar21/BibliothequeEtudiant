@@ -147,7 +147,7 @@ public class Bibliotheque implements Serializable
                 }
             }
 			setBook(new Book(Author,DateRelease,Editor,ISBN,Title,p),ISBN);
-
+            System.out.println(_dicoBook.get(ISBN).toString());
 		}
 	}
 
