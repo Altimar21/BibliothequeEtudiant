@@ -96,6 +96,5 @@ public void menuLecteur() {
 			}
 		} while (menuBook != 0);
 	}
-	
 }
 
