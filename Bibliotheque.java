@@ -28,7 +28,7 @@ public class Bibliotheque implements Serializable
 	
 
 		public Bibliotheque() {
-			this.setReader(new HashMap<Integer, Reader>());
+			this.setReader(new HashMap<Integer, Lecteur>());
 		
 		}
 	
@@ -75,29 +75,11 @@ public class Bibliotheque implements Serializable
 		String tel = EntreesSorties.lireChaine("Entrez le numero de telephone :");
 		EntreesSorties.afficherMessage("Fin de saisie, lecteur numéro : " + numReader);
 
-		Reader L = new Reader(nom, prenom, numReader, dateNaiss, adresse, tel);
+		Lecteur L = new Lecteur(nom, prenom, numReader, dateNaiss, adresse, tel);
 		lierLecteur(L, numReader);
 	}
+		
 
-	public void newCopy (){
-		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN du livre :");
-		Book B = getBook(ISBN);
-		if(B!=null)
-		{
-			B.toString();
-			GregorianCalendar dateRecep = EntreesSorties.lireDate("Entrez la date de reception");
-			boolean emprunt;
-			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empreintable ? (0 :non 1: Oui)");
-			if (empruntable==1)
-			{
-				emprunt = true;
-			}
-			else{
-				emprunt = false;
-			}
-			B.addCopy(emprunt, dateRecep);
-		}
-	}
 	
 	
 	/*
@@ -110,7 +92,7 @@ public class Bibliotheque implements Serializable
 	{
 		Integer numReader = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
 		
-		Reader L = unLecteur(numReader);
+		Lecteur L = unLecteur(numReader);
 		
 		if (L!=null){
 			L.printReader();
@@ -128,7 +110,7 @@ public class Bibliotheque implements Serializable
 		// Setters
 	// -----------------------------------------------
 	
-	private void setReader(HashMap<Integer, Reader> dicoLecteur) {
+	private void setReader(HashMap<Integer, Lecteur> dicoLecteur) {
 		_dicoLecteur = dicoLecteur;
 	}
 
@@ -142,15 +124,15 @@ public class Bibliotheque implements Serializable
 	 * La méthode unLecteur permet de rechercher dans la base de donnée de bibliotheque un objet 
 	 * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
 	 */
-	private Reader unLecteur(Integer numReader)
+	private Lecteur unLecteur(Integer numReader)
 	{
 		return _dicoLecteur.get(numReader);
 	}
-
+	
 	/*
 	 * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
 	 */
-	private void lierLecteur(Reader L, Integer numReader)
+	private void lierLecteur(Lecteur L, Integer numReader)
 	{
 		_dicoLecteur.put(numReader, L);
 	}
@@ -160,7 +142,7 @@ public class Bibliotheque implements Serializable
 	 * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
 	 * pour eventuellement les relancer.
 	 */
-	private Iterator<Reader> lesLecteurs() {
+	private Iterator<Lecteur> lesLecteurs() {
 		return _dicoLecteur.values().iterator();
 	}
 }
