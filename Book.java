@@ -32,8 +32,13 @@ public class Book {
     }
 
     public void PrintCopy(int idCopy){
-        Copy c = findCopy(idCopy);
-        c.toString();
+        Copy c = getCopy(idCopy);
+        if (c != null){
+            c.toString();
+        }else{
+            System.out.println("L'exemplaire n'exite pas");
+        }
+
     }
 
     private Copy findCopy(int idCopy){

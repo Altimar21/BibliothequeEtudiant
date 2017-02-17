@@ -123,6 +123,12 @@ public class Bibliotheque implements Serializable
 
 	public void consultBook(){
 		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
+        Book b = getBook(ISBN);
+		if(b != null){
+		    b.toString();
+        }else{
+		    System.out.println("Le Livre n'existe pas");
+        }
 	}
 
 	public void newBook(){
@@ -147,9 +153,22 @@ public class Bibliotheque implements Serializable
             }
 			setBook(new Book(Author,DateRelease,Editor,ISBN,Title,p),ISBN);
             System.out.println(_dicoBook.get(ISBN).toString());
-		}
+		}else{
+            System.out.println("Le Livre existe déjà");
+        }
 	}
 
+	public void consultCopyBook(){
+        int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
+        Book b = getBook(ISBN);
+        if (b != null){
+            b.toString();
+            int idCopy = EntreesSorties.lireEntier("Entrez l'idCopy :");
+            b.PrintCopy(idCopy);
+        }else{
+            System.out.println("Le Livre n'existe pas");
+        }
+    }
 // -----------------------------------------------
 	// Private
 // -----------------------------------------------
