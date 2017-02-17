@@ -15,7 +15,7 @@ public class Book {
     private Publiclec publicc;
     private int nbCopy;
     private int lastIdCopy;
-    private Vector<Copy> Copy;
+    private Vector<Copy> copy;
 
     public Book(String author, GregorianCalendar dateRelease, String editor, int numISBN, String title, Publiclec publicc) {
         this.author = author;
@@ -27,14 +27,13 @@ public class Book {
 
         lastIdCopy = 0;
 
-        Copy = new Vector<Copy>();
-        Copy = null;
+        copy = new Vector<>();
     }
 
     public void PrintCopy(int idCopy){
         Copy c = getCopy(idCopy);
         if (c != null){
-            c.toString();
+            System.out.println(c.toString());
         }else{
             System.out.println("L'exemplaire n'exite pas");
         }
@@ -42,9 +41,9 @@ public class Book {
     }
 
     private Copy findCopy(int idCopy){
-        for (int i = 0; i <= Copy.size() ;i++){
-            if(Copy.get(i).getIdCopy() == idCopy){
-                return Copy.get(i);
+        for (int i = 0; i <= copy.size() ;i++){
+            if(copy.get(i).getIdCopy() == idCopy){
+                return copy.get(i);
             }
         }
         return null;
@@ -61,7 +60,7 @@ public class Book {
 
     private void setCopy(boolean borrCopy, GregorianCalendar dateRecep, int idCopy){
         Copy c = new Copy(borrCopy,dateRecep,idCopy);
-        this.Copy.add(c);
+        this.copy.add(c);
     }
 
 

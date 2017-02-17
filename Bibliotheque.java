@@ -126,7 +126,7 @@ public class Bibliotheque implements Serializable
 		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book b = getBook(ISBN);
 		if(b != null){
-		    b.toString();
+		    System.out.println(b.toString());
         }else{
 		    System.out.println("Le Livre n'existe pas");
         }
