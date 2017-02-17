@@ -28,18 +28,18 @@ public class Bibliotheque implements Serializable
 	
 
 		public Bibliotheque() {
-			this.setReader(new HashMap<Integer, Lecteur>());
-		
+			this.setReader(new HashMap<Integer, Reader>());
+
 		}
-	
+
 // -----------------------------------------------
 	// Public
-// -----------------------------------------------	
-		
+// -----------------------------------------------
+
 		// -----------------------------------------------
 			// Mï¿½thodes
 		// -----------------------------------------------
-	
+
 		/*
 		 * La méthode nouveauLecteur permet de créé un lecteur en demandant la saisie de son numéro
 		 * nom, prénom, date de naissance, adresse et numéro de téléphone.
@@ -75,13 +75,31 @@ public class Bibliotheque implements Serializable
 		String tel = EntreesSorties.lireChaine("Entrez le numero de telephone :");
 		EntreesSorties.afficherMessage("Fin de saisie, lecteur numéro : " + numReader);
 
-		Lecteur L = new Lecteur(nom, prenom, numReader, dateNaiss, adresse, tel);
+		Reader L = new Reader(nom, prenom, numReader, dateNaiss, adresse, tel);
 		lierLecteur(L, numReader);
 	}
-		
 
-	
-	
+	public void newCopy (){
+		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN du livre :");
+		Book B = getBook(ISBN);
+		if(B!=null)
+		{
+			B.toString();
+			GregorianCalendar dateRecep = EntreesSorties.lireDate("Entrez la date de reception");
+			boolean emprunt;
+			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empreintable ? (0 :non 1: Oui)");
+			if (empruntable==1)
+			{
+				emprunt = true;
+			}
+			else{
+				emprunt = false;
+			}
+			B.addCopy(emprunt, dateRecep);
+		}
+	}
+
+
 	/*
 	 * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
 	 * un lecteur, par la saisie de son identifiant (numéro de lecteur).
@@ -91,9 +109,9 @@ public class Bibliotheque implements Serializable
 	public void consulterReader()
 	{
 		Integer numReader = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
-		
-		Lecteur L = unLecteur(numReader);
-		
+
+		Reader L = unLecteur(numReader);
+
 		if (L!=null){
 			L.printReader();
 		}
@@ -101,48 +119,48 @@ public class Bibliotheque implements Serializable
 			EntreesSorties.afficherMessage("Aucun lecteur n'est associe a ce numero.");
 		}
 	}
-	
+
 // -----------------------------------------------
 	// Private
 // -----------------------------------------------
-	
+
 	// -----------------------------------------------
 		// Setters
 	// -----------------------------------------------
-	
-	private void setReader(HashMap<Integer, Lecteur> dicoLecteur) {
+
+	private void setReader(HashMap<Integer, Reader> dicoLecteur) {
 		_dicoLecteur = dicoLecteur;
 	}
 
-	
-	
+
+
 	// -----------------------------------------------
 		// Mï¿½thodes
 	// -----------------------------------------------
-	
+
 	/*
-	 * La méthode unLecteur permet de rechercher dans la base de donnée de bibliotheque un objet 
+	 * La méthode unLecteur permet de rechercher dans la base de donnée de bibliotheque un objet
 	 * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
 	 */
-	private Lecteur unLecteur(Integer numReader)
+	private Reader unLecteur(Integer numReader)
 	{
 		return _dicoLecteur.get(numReader);
 	}
-	
+
 	/*
 	 * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
 	 */
-	private void lierLecteur(Lecteur L, Integer numReader)
+	private void lierLecteur(Reader L, Integer numReader)
 	{
 		_dicoLecteur.put(numReader, L);
 	}
-	
-	
+
+
 	/*
 	 * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
 	 * pour eventuellement les relancer.
 	 */
-	private Iterator<Lecteur> lesLecteurs() {
+	private Iterator<Reader> lesLecteurs() {
 		return _dicoLecteur.values().iterator();
 	}
 }
