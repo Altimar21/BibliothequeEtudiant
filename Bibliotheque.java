@@ -29,7 +29,7 @@ public class Bibliotheque implements Serializable
 
 		public Bibliotheque() {
 			this.setReader(new HashMap<Integer, Reader>());
-
+            this.setHashBook(new HashMap<Integer, Book>());
 		}
 
 // -----------------------------------------------
@@ -91,6 +91,7 @@ public class Bibliotheque implements Serializable
 			if (empruntable==1)
 			{
 				emprunt = true;
+				System.out.print("top");
 			}
 			else{
 				emprunt = false;
@@ -132,8 +133,9 @@ public class Bibliotheque implements Serializable
 	}
 
 	public void newBook(){
-		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
-		if(getBook(ISBN) != null){
+		Integer ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
+        Book B = getBook(ISBN);
+		if(B==null){
 			String Author = EntreesSorties.lireChaine("Entrez l'autheur :");
             GregorianCalendar DateRelease = EntreesSorties.lireDate("Entrer une date");
 			String Editor = EntreesSorties.lireChaine("Entrez l'editeur :");
@@ -180,7 +182,9 @@ public class Bibliotheque implements Serializable
 	private void setReader(HashMap<Integer, Reader> dicoLecteur) {
 		_dicoLecteur = dicoLecteur;
 	}
-
+    private void setHashBook(HashMap<Integer, Book> dicoBook){
+	    _dicoBook = dicoBook;
+    }
 
 
 	// -----------------------------------------------
@@ -219,7 +223,7 @@ public class Bibliotheque implements Serializable
 	// -----------------------------------------------
 	// Getter
 	// -----------------------------------------------
-	private Book getBook(int ISBN){
+	private Book getBook(Integer ISBN){
 		return _dicoBook.get(ISBN);
 	}
 }

@@ -16,8 +16,8 @@ public void menuPrincipal() {
 		EntreesSorties.afficherMessage(" ========================================================");
 		EntreesSorties.afficherMessage("|                   Menu Principal                       |");
 		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
-		EntreesSorties.afficherMessage("| Menu Reader : 1                                       |");
-		EntreesSorties.afficherMessage("| Menu Book : 2                                         |");
+		EntreesSorties.afficherMessage("| Menu Lecteur : 1                                       |");
+		EntreesSorties.afficherMessage("| Menu Livre : 2                                         |");
 		EntreesSorties.afficherMessage("| Quitter : 0                                            |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menu = EntreesSorties.lireEntier();
@@ -48,8 +48,8 @@ public void menuLecteur() {
 	do {
 		EntreesSorties.afficherMessage(" ========================================================");
 		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
-		EntreesSorties.afficherMessage("| Nouveau Reader : 1                                    |");
-		EntreesSorties.afficherMessage("| Consulter Reader : 2                                  |");
+		EntreesSorties.afficherMessage("| Nouveau Lecteur : 1                                    |");
+		EntreesSorties.afficherMessage("| Consulter Lecteur : 2                                  |");
 		EntreesSorties.afficherMessage("| Retour Menu Principal : 0                              |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menuLect = EntreesSorties.lireEntier();
@@ -76,19 +76,28 @@ public void menuLecteur() {
 			EntreesSorties.afficherMessage(" ========================================================");
 			EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
 			EntreesSorties.afficherMessage("| Ajout d'un livre : 1                                   |");
-			EntreesSorties.afficherMessage("| Consulter nb exemplaire : 2                            |");
+			EntreesSorties.afficherMessage("| Consulter un livre : 2                                 |");
+			EntreesSorties.afficherMessage("| Ajout d'un  exemplaire : 3                             |");
+			EntreesSorties.afficherMessage("| Consulter un exemplaire : 4                            |");
 			EntreesSorties.afficherMessage("| Retour Menu Principal : 0                              |");
 			EntreesSorties.afficherMessage(" ========================================================");
 			menuBook = EntreesSorties.lireEntier();
 
 			switch (menuBook){
 				case 1 : {
-					//quelquechose
+					_bibliotheque.newBook();
 					break;
 				}
 				case 2 : {
-					//quelquechose
+					_bibliotheque.consultBook();
 					break;
+				}
+				case 3 : {
+					_bibliotheque.newCopy();
+					break;
+				}
+				case 4 : {
+					_bibliotheque.consultCopyBook();
 				}
 				default : {
 					break;

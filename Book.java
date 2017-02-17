@@ -60,7 +60,8 @@ public class Book {
     }
 
     private void setCopy(boolean borrCopy, GregorianCalendar dateRecep, int idCopy){
-        this.Copy.addElement(new Copy(borrCopy,dateRecep,idCopy));
+        Copy c = new Copy(borrCopy,dateRecep,idCopy);
+        this.Copy.add(c);
     }
 
 
