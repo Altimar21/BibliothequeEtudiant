@@ -16,7 +16,7 @@ public class Bibliotheque implements Serializable
 	// -----------------------------------------------
 		private int lastNumReader = 0;
 		private HashMap<Integer, Reader> _dicoLecteur;
-		
+		private HashMap<Integer, Book> _dicoBook;
 		/*
 		 * Le dictionnaire de lecteur permet à bibliotheque de 
 		 * garantir l'unicité de ces derniers, et facilitent les recherches et créations.
@@ -78,8 +78,26 @@ public class Bibliotheque implements Serializable
 		Reader L = new Reader(nom, prenom, numReader, dateNaiss, adresse, tel);
 		lierLecteur(L, numReader);
 	}
-		
 
+	public void newCopy (){
+		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN du livre :");
+		Book B = getBook(ISBN);
+		if(B!=null)
+		{
+			B.toString();
+			GregorianCalendar dateRecep = EntreesSorties.lireDate("Entrez la date de reception");
+			boolean emprunt;
+			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empreintable ? (0 :non 1: Oui)");
+			if (empruntable==1)
+			{
+				emprunt = true;
+			}
+			else{
+				emprunt = false;
+			}
+			B.addCopy(emprunt, dateRecep);
+		}
+	}
 	
 	
 	/*
@@ -128,7 +146,7 @@ public class Bibliotheque implements Serializable
 	{
 		return _dicoLecteur.get(numReader);
 	}
-	
+
 	/*
 	 * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
 	 */
