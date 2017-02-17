@@ -56,11 +56,11 @@ public void menuLecteur() {
 			
 			switch (menuLect){
 				case 1 : {
-					_bibliotheque.nouveauLecteur();
+					_bibliotheque.newReader();
 					break;
 				}
 				case 2 : {
-					_bibliotheque.consulterLecteur();
+					_bibliotheque.consulterReader();
 					break;
 				}
 				default : {

@@ -14,7 +14,7 @@ public class Bibliotheque implements Serializable
 	// -----------------------------------------------
 		//Attributs
 	// -----------------------------------------------
-	
+		private int lastNumReader = 0;
 		private HashMap<Integer, Lecteur> _dicoLecteur;
 		
 		/*
@@ -28,7 +28,7 @@ public class Bibliotheque implements Serializable
 	
 
 		public Bibliotheque() {
-			this.setLecteurs(new HashMap<Integer, Lecteur>());
+			this.setReader(new HashMap<Integer, Lecteur>());
 		
 		}
 	
@@ -49,47 +49,37 @@ public class Bibliotheque implements Serializable
 		 * Une fois le nouveau lecteur créé, il est ajouté au dictionnaire de lecteur
 		 * afin de garantir la cohérence des données.
 		 */
-	public void nouveauLecteur()
-	{
-		Integer numLecteur = EntreesSorties.lireEntier("Entrez le numero de lecteur :");
-		
-		Lecteur L = unLecteur(numLecteur);
-		
-		if (L == null) 
-		{
-			String nom = EntreesSorties.lireChaine("Entrez le nom :");
-			String prenom = EntreesSorties.lireChaine("Entrez le prenom :");
-			Integer age;
-			GregorianCalendar dateNaiss, dateNaissComp;
-			GregorianCalendar dateActuelle = new GregorianCalendar();
-			do {
-				dateNaiss = EntreesSorties.lireDate("Entrez la date de naissance du lecteur :");
-				dateNaissComp = new GregorianCalendar(dateActuelle.get(GregorianCalendar.YEAR), dateNaiss.get(GregorianCalendar.MONTH), dateNaiss.get(GregorianCalendar.DATE));
-				if(dateNaissComp.before(dateActuelle)){
-					age=dateActuelle.get(GregorianCalendar.YEAR)-dateNaiss.get(GregorianCalendar.YEAR);
-				}
-				else{
-					age=dateActuelle.get(GregorianCalendar.YEAR)-dateNaiss.get(GregorianCalendar.YEAR)-1;
-				}
-				if ((age<=3) | (age>=110)){
-					EntreesSorties.afficherMessage("Age incorrecte ("+age+"), veuillez recommencer.");
-				}
-				else {
-					EntreesSorties.afficherMessage("Age du lecteur : " + age + " ans");
-				}
-			} while ((age<=3) | (age>=110));
-			String adresse = EntreesSorties.lireChaine("Entrez l'adresse :");
-			String tel = EntreesSorties.lireChaine("Entrez le numero de telephone :");
-			EntreesSorties.afficherMessage("Fin de saisie");
-			
-			L = new Lecteur(nom, prenom, numLecteur, dateNaiss, adresse, tel);
-			lierLecteur(L, numLecteur);
-		}
-		else {
-			EntreesSorties.afficherMessage("Ce numero de lecteur existe deja.");
-		}
-		
+	public void newReader() {
+		Integer numReader = lastNumReader + 1;
+		lastNumReader++;
+		String nom = EntreesSorties.lireChaine("Entrez le nom :");
+		String prenom = EntreesSorties.lireChaine("Entrez le prenom :");
+		Integer age;
+		GregorianCalendar dateNaiss, dateNaissComp;
+		GregorianCalendar dateActuelle = new GregorianCalendar();
+		do {
+			dateNaiss = EntreesSorties.lireDate("Entrez la date de naissance du lecteur :");
+			dateNaissComp = new GregorianCalendar(dateActuelle.get(GregorianCalendar.YEAR), dateNaiss.get(GregorianCalendar.MONTH), dateNaiss.get(GregorianCalendar.DATE));
+			if (dateNaissComp.before(dateActuelle)) {
+				age = dateActuelle.get(GregorianCalendar.YEAR) - dateNaiss.get(GregorianCalendar.YEAR);
+			} else {
+				age = dateActuelle.get(GregorianCalendar.YEAR) - dateNaiss.get(GregorianCalendar.YEAR) - 1;
+			}
+			if ((age <= 3) | (age >= 110)) {
+				EntreesSorties.afficherMessage("Age incorrecte (" + age + "), veuillez recommencer.");
+			} else {
+				EntreesSorties.afficherMessage("Age du lecteur : " + age + " ans");
+			}
+		} while ((age <= 3) | (age >= 110));
+		String adresse = EntreesSorties.lireChaine("Entrez l'adresse :");
+		String tel = EntreesSorties.lireChaine("Entrez le numero de telephone :");
+		EntreesSorties.afficherMessage("Fin de saisie, lecteur numéro : " + numReader);
+
+		Lecteur L = new Lecteur(nom, prenom, numReader, dateNaiss, adresse, tel);
+		lierLecteur(L, numReader);
 	}
+		
+
 	
 	
 	/*
@@ -98,14 +88,14 @@ public class Bibliotheque implements Serializable
 	 * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
 	 * renvoyé a l'utilisateur.
 	 */
-	public void consulterLecteur()
+	public void consulterReader()
 	{
-		Integer numLecteur = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
+		Integer numReader = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
 		
-		Lecteur L = unLecteur(numLecteur);
+		Lecteur L = unLecteur(numReader);
 		
 		if (L!=null){
-			L.afficherLecteur();
+			L.printReader();
 		}
 		else {
 			EntreesSorties.afficherMessage("Aucun lecteur n'est associe a ce numero.");
@@ -120,7 +110,7 @@ public class Bibliotheque implements Serializable
 		// Setters
 	// -----------------------------------------------
 	
-	private void setLecteurs(HashMap<Integer, Lecteur> dicoLecteur) {
+	private void setReader(HashMap<Integer, Lecteur> dicoLecteur) {
 		_dicoLecteur = dicoLecteur;
 	}
 
@@ -134,17 +124,17 @@ public class Bibliotheque implements Serializable
 	 * La méthode unLecteur permet de rechercher dans la base de donnée de bibliotheque un objet 
 	 * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
 	 */
-	private Lecteur unLecteur(Integer numLecteur)
+	private Lecteur unLecteur(Integer numReader)
 	{
-		return _dicoLecteur.get(numLecteur);
+		return _dicoLecteur.get(numReader);
 	}
 	
 	/*
 	 * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
 	 */
-	private void lierLecteur(Lecteur L, Integer numLecteur)
+	private void lierLecteur(Lecteur L, Integer numReader)
 	{
-		_dicoLecteur.put(numLecteur, L);
+		_dicoLecteur.put(numReader, L);
 	}
 	
 	
