@@ -4,7 +4,7 @@ import java.util.Vector;
  * Created by Julien on 15/02/2017, 13:20.
  * Package name : PACKAGE_NAME.
  */
-public class Livre {
+public class Book {
 
     private String author;
     private Date dateRelease;
@@ -16,7 +16,7 @@ public class Livre {
     private int lastIdCopy;
     private Vector<Copy> Copy;
 
-    public Livre(String author, Date dateRelease, String editor, int numISBN, String title, Publiclec publicc) {
+    public Book(String author, Date dateRelease, String editor, int numISBN, String title, Publiclec publicc) {
         this.author = author;
         this.dateRelease = dateRelease;
         this.editor = editor;
@@ -24,12 +24,13 @@ public class Livre {
         this.title = title;
         this.publicc = publicc;
 
+        lastIdCopy = 0;
+
         Copy = new Vector<Copy>();
         Copy = null;
     }
 
     public void PrintCopy(int idCopy){
-
         Copy c = findCopy(idCopy);
         c.toString();
     }
@@ -47,15 +48,19 @@ public class Livre {
         return findCopy(idCopy);
     }
 
+    public void addCopy(boolean borrCopy, Date dateRecep){
+        lastIdCopy++;
+        setCopy(borrCopy,dateRecep,lastIdCopy);
+    }
+
     private void setCopy(boolean borrCopy, Date dateRecep, int idCopy){
         this.Copy.addElement(new Copy(borrCopy,dateRecep,idCopy));
     }
 
 
-
     @Override
     public String toString() {
-        return "Livre{" +
+        return "Book{" +
                 "author='" + author + '\'' +
                 ", dateRelease=" + dateRelease +
                 ", editor='" + editor + '\'' +

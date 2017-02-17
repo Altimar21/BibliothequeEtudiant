@@ -17,7 +17,7 @@ public void menuPrincipal() {
 		EntreesSorties.afficherMessage("|                   Menu Principal                       |");
 		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
 		EntreesSorties.afficherMessage("| Menu Lecteur : 1                                       |");
-		EntreesSorties.afficherMessage("| Menu Livre : 2                                         |");
+		EntreesSorties.afficherMessage("| Menu Book : 2                                         |");
 		EntreesSorties.afficherMessage("| Quitter : 0                                            |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menu = EntreesSorties.lireEntier();
