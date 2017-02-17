@@ -100,6 +100,7 @@ public class Bibliotheque implements Serializable
 	}
 
 
+
 	/*
 	 * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
 	 * un lecteur, par la saisie de son identifiant (numéro de lecteur).
@@ -117,6 +118,36 @@ public class Bibliotheque implements Serializable
 		}
 		else {
 			EntreesSorties.afficherMessage("Aucun lecteur n'est associe a ce numero.");
+		}
+	}
+
+	public void consultBook(){
+		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
+
+	}
+
+	public void newBook(){
+		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
+		if(getBook(ISBN) != null){
+			String Author = EntreesSorties.lireChaine("Entrez l'autheur :");
+            GregorianCalendar DateRelease = EntreesSorties.lireDate("Entrer une date");
+			String Editor = EntreesSorties.lireChaine("Entrez l'editeur :");
+			String Title = EntreesSorties.lireChaine("Entrez le Titre :");
+			int Public = EntreesSorties.lireEntier("Entrez le Publique 1: ENFANT, 2:ADO, 3:ADULTE:");
+            Publiclec p = null;
+			switch (Public){
+                case 1:{
+                    p = p.ADO;
+                }
+                case 2:{
+                    p = p.ENFANT;
+                }
+                case 3:{
+                    p = p.ADULTE;
+                }
+            }
+			setBook(new Book(Author,DateRelease,Editor,ISBN,Title,p),ISBN);
+
 		}
 	}
 
@@ -154,6 +185,9 @@ public class Bibliotheque implements Serializable
 	{
 		_dicoLecteur.put(numReader, L);
 	}
+    private void setBook(Book b, Integer ISBN){
+        _dicoBook.put(ISBN,b);
+    }
 
 
 	/*
@@ -162,5 +196,12 @@ public class Bibliotheque implements Serializable
 	 */
 	private Iterator<Reader> lesLecteurs() {
 		return _dicoLecteur.values().iterator();
+	}
+
+	// -----------------------------------------------
+	// Getter
+	// -----------------------------------------------
+	private Book getBook(int ISBN){
+		return _dicoBook.get(ISBN);
 	}
 }
