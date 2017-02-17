@@ -1,3 +1,4 @@
+import java.util.GregorianCalendar;
 import java.util.Vector;
 
 /**
@@ -48,12 +49,12 @@ public class Book {
         return findCopy(idCopy);
     }
 
-    public void addCopy(boolean borrCopy, Date dateRecep){
+    public void addCopy(boolean borrCopy, GregorianCalendar dateRecep){
         lastIdCopy++;
         setCopy(borrCopy,dateRecep,lastIdCopy);
     }
 
-    private void setCopy(boolean borrCopy, Date dateRecep, int idCopy){
+    private void setCopy(boolean borrCopy, GregorianCalendar dateRecep, int idCopy){
         this.Copy.addElement(new Copy(borrCopy,dateRecep,idCopy));
     }
 

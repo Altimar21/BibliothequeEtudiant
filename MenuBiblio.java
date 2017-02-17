@@ -7,7 +7,7 @@ public class MenuBiblio {
 	}
 	
 	/*
-	 * menuPrincipal permet � l'utilisateur de selectionner un type de sous menu (Lecteur, Ouvrage ou Exemplaire) 
+	 * menuPrincipal permet � l'utilisateur de selectionner un type de sous menu (Reader, Ouvrage ou Exemplaire)
 	 * o� il effectuera par la suite l'action d�sir�e. Si l'utilisateur a fini d'utiliuser le programme, il choisit l'option Quitter.
 	*/
 public void menuPrincipal() {
@@ -16,7 +16,7 @@ public void menuPrincipal() {
 		EntreesSorties.afficherMessage(" ========================================================");
 		EntreesSorties.afficherMessage("|                   Menu Principal                       |");
 		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
-		EntreesSorties.afficherMessage("| Menu Lecteur : 1                                       |");
+		EntreesSorties.afficherMessage("| Menu Reader : 1                                       |");
 		EntreesSorties.afficherMessage("| Menu Book : 2                                         |");
 		EntreesSorties.afficherMessage("| Quitter : 0                                            |");
 		EntreesSorties.afficherMessage(" ========================================================");
@@ -48,8 +48,8 @@ public void menuLecteur() {
 	do {
 		EntreesSorties.afficherMessage(" ========================================================");
 		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
-		EntreesSorties.afficherMessage("| Nouveau Lecteur : 1                                    |");
-		EntreesSorties.afficherMessage("| Consulter Lecteur : 2                                  |");
+		EntreesSorties.afficherMessage("| Nouveau Reader : 1                                    |");
+		EntreesSorties.afficherMessage("| Consulter Reader : 2                                  |");
 		EntreesSorties.afficherMessage("| Retour Menu Principal : 0                              |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menuLect = EntreesSorties.lireEntier();
