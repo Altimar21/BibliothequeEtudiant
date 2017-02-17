@@ -123,7 +123,6 @@ public class Bibliotheque implements Serializable
 
 	public void consultBook(){
 		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
-
 	}
 
 	public void newBook(){
