@@ -66,14 +66,13 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "author='" + author + '\'' +
-                ", dateRelease=" + dateRelease +
-                ", editor='" + editor + '\'' +
-                ", numISBN=" + numISBN +
-                ", title='" + title + '\'' +
-                ", publicc=" + publicc +
-                ", nbCopy=" + nbCopy +
-                '}';
+        return "Detail livre : \n" +
+                "author      : " + author + "\n" +
+                "dateRelease : " + EntreesSorties.ecrireDate(dateRelease)+ "\n" +
+                "editor      : " + editor + "\n" +
+                "numISBN     : " + numISBN + "\n" +
+                "title       : " + title + "\n" +
+                "publique    : " + publicc +"\n" +
+                "nbCopy      : " + nbCopy ;
     }
 }

@@ -19,13 +19,20 @@ public class Copy {
         return idCopy;
     }
 
+    private String BooltoString(boolean b){
+        if(borrCopy){
+           return "Oui";
+        }
+        else{
+           return "Non";
+        }
+    }
 
     @Override
     public String toString() {
-        return "Copy{" +
-                "borrCopy=" + borrCopy +
-                ", dateRecep=" + dateRecep +
-                ", idCopy=" + idCopy +
-                '}';
+        return "Detail exemplaire    : " +"\n" +
+                "empruntable  : " + BooltoString(borrCopy) + "\n" +
+                "dateRecep    : " + EntreesSorties.ecrireDate(dateRecep) +"\n" +
+                "idExemplaire : " + idCopy ;
     }
 }

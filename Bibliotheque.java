@@ -85,13 +85,12 @@ public class Bibliotheque implements Serializable
 		if(B!=null)
 		{
 			B.toString();
-			GregorianCalendar dateRecep = EntreesSorties.lireDate("Entrez la date de reception");
+			GregorianCalendar dateRecep = EntreesSorties.lireDate("Entrez la date de reception :");
 			boolean emprunt;
-			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empreintable ? (0 :non 1: Oui)");
+			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empreintable ? (0 :non 1: Oui) :");
 			if (empruntable==1)
 			{
 				emprunt = true;
-				System.out.print("top");
 			}
 			else{
 				emprunt = false;
@@ -137,7 +136,7 @@ public class Bibliotheque implements Serializable
         Book B = getBook(ISBN);
 		if(B==null){
 			String Author = EntreesSorties.lireChaine("Entrez l'autheur :");
-            GregorianCalendar DateRelease = EntreesSorties.lireDate("Entrer une date");
+            GregorianCalendar DateRelease = EntreesSorties.lireDate("Entrer une date :");
 			String Editor = EntreesSorties.lireChaine("Entrez l'editeur :");
 			String Title = EntreesSorties.lireChaine("Entrez le Titre :");
 			int Public = EntreesSorties.lireEntier("Entrez le Publique 1: ENFANT, 2:ADO, 3:ADULTE:");
