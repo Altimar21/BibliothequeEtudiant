@@ -143,10 +143,10 @@ public class Bibliotheque implements Serializable
             Publiclec p = null;
 			switch (Public){
                 case 1:{
-                    p = p.ADO;
+                    p = p.ENFANT;
                 }
                 case 2:{
-                    p = p.ENFANT;
+                    p = p.ADO;
                 }
                 case 3:{
                     p = p.ADULTE;
@@ -165,11 +165,44 @@ public class Bibliotheque implements Serializable
         if (b != null){
             b.toString();
             int idCopy = EntreesSorties.lireEntier("Entrez l'idCopy :");
-            b.PrintCopy(idCopy);
+            if(!b.getCopy()){
+                if(b.getCopy(idCopy) != null){
+                    b.PrintCopy(idCopy);
+                }else{
+                    System.out.println("Ce numero d'exmplaire n'exite pas");
+                }
+            }else{
+                System.out.println("Accun exemplaire n'est enregistrer pour ce livre");
+            }
         }else{
             System.out.println("Le Livre n'existe pas");
         }
     }
+
+    public void BorrCopy(){
+	    Integer NumReader = EntreesSorties.lireEntier("Entrer le numero du lecteur :");
+        Reader reader = getReader(NumReader);
+        if(reader != null){
+        	int ISBN = EntreesSorties.lireEntier("Enter numero ISBN :");
+           Book book = getBook(ISBN);
+           if(book != null){
+               if(!book.getCopy()) {
+                 if  (book.nbBorrCopy() != 0) {
+                     reader.setBorrow(book.getCopy(book.getfirstBorrCoppy()));
+                 }else{
+                     System.out.println("Pas d'exmplaire emprintable");
+                 }
+               }else{
+                   System.out.println("Pas d'expemplaire de ce livre en stock");
+               }
+           }else{
+               System.out.println("Le livre n'existe pas");
+           }
+        }else{
+            System.out.println("Le lecteur n'existe pas");
+        }
+    }
+
 // -----------------------------------------------
 	// Private
 // -----------------------------------------------
@@ -225,4 +258,8 @@ public class Bibliotheque implements Serializable
 	private Book getBook(Integer ISBN){
 		return _dicoBook.get(ISBN);
 	}
+
+	private Reader getReader(Integer NumReader){
+	    return _dicoLecteur.get(NumReader);
+    }
 }

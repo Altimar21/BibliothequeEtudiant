@@ -1,7 +1,6 @@
 import java.io.Serializable;
-import java.util.GregorianCalendar;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.time.LocalDateTime;
+import java.util.*;
 
 // Classe de gestion de Reader
 
@@ -20,6 +19,7 @@ public class Reader implements Serializable
 		private GregorianCalendar _dateNaiss;
 		private String adress;
 		private String tel;
+		private Vector<Borrow> borrow;
 	
 	
 	
@@ -35,6 +35,8 @@ public class Reader implements Serializable
 			this.setDateNaiss(dateNaiss);
 			this.setAdresse(adress);
 			this.setTel(tel);
+
+			borrow = new Vector<>();
 		}
 
 // -----------------------------------------------
@@ -73,10 +75,11 @@ public class Reader implements Serializable
 		// -----------------------------------------------
 		
 		/*
-		 * La m�thode afficherLecteur affiche l'ensemble des informations relatives � un lecteur.
+		 * La méthode afficherLecteur affiche l'ensemble des informations relatives � un lecteur.
 		 */
 		public void printReader()
 		{
+
 			System.out.println("Numero lecteur : " + this.getNumLecteur());
 			System.out.println("Nom et prenom du lecteur: " + this.getNom() + " " + this.getPrenom());
 			System.out.println("Age : " + this.calculAge() + " ans");
@@ -103,8 +106,6 @@ public class Reader implements Serializable
 			}
 			return age;
 		}
-		
-	
 	
 // -----------------------------------------------
 	// Private
@@ -137,6 +138,8 @@ public class Reader implements Serializable
 		private void setTel(String tel) {
 			this.tel = tel;
 		}
-		
-		
+
+        public void setBorrow(Copy copy){
+            borrow.add(new Borrow(this,copy, new GregorianCalendar()));
+        }
 }

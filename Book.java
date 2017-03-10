@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.Vector;
 
@@ -5,7 +6,7 @@ import java.util.Vector;
  * Created by Julien on 15/02/2017, 13:20.
  * Package name : PACKAGE_NAME.
  */
-public class Book {
+public class Book implements Serializable {
 
     private String author;
     private GregorianCalendar dateRelease;
@@ -49,9 +50,40 @@ public class Book {
         return null;
     }
 
-    private Copy getCopy(int idCopy){
+    public Copy getCopy(int idCopy){
         return findCopy(idCopy);
     }
+
+    public boolean getCopy(){
+        return copy.isEmpty();
+    }
+
+    private int getNbCopy(){
+        return copy.size();
+    }
+
+    //retourne l'id du premier exemplaire empruntable
+    public int getfirstBorrCoppy() {
+        for (int i = 0; i <= copy.size(); i++) {
+            if (copy.get(i).isBorrCopy()) {
+                return copy.get(i).getIdCopy();
+            }
+        }
+        return 0;
+    }
+
+    //retourne le nombre d'exemplaire empruntable
+    public int nbBorrCopy(){
+     //  return copy.size();
+        int count = 0;
+        for (int i = 0; i < copy.size() ;i++){
+            if(copy.get(i).isBorrCopy()){
+                count++;
+            }
+        }
+        return count;
+    }
+
 
     public void addCopy(boolean borrCopy, GregorianCalendar dateRecep){
         lastIdCopy++;
@@ -59,20 +91,20 @@ public class Book {
     }
 
     private void setCopy(boolean borrCopy, GregorianCalendar dateRecep, int idCopy){
-        Copy c = new Copy(borrCopy,dateRecep,idCopy);
-        this.copy.add(c);
+      //  Copy c = new Copy(borrCopy,dateRecep,idCopy, this);
+        this.copy.add(new Copy(borrCopy,dateRecep,idCopy, this));
     }
 
 
     @Override
     public String toString() {
-        return "Detail livre : \n" +
-                "author      : " + author + "\n" +
+        return "Detail livre : "            + "\n" +
+                "author      : " + author   + "\n" +
                 "dateRelease : " + EntreesSorties.ecrireDate(dateRelease)+ "\n" +
-                "editor      : " + editor + "\n" +
-                "numISBN     : " + numISBN + "\n" +
-                "title       : " + title + "\n" +
-                "publique    : " + publicc +"\n" +
-                "nbCopy      : " + nbCopy ;
+                "editor      : " + editor   + "\n" +
+                "numISBN     : " + numISBN  + "\n" +
+                "title       : " + title    + "\n" +
+                "publique    : " + publicc  + "\n" +
+                "nbCopy      : " + copy.size() ;
     }
 }

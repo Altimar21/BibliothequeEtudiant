@@ -48,8 +48,9 @@ public void menuLecteur() {
 	do {
 		EntreesSorties.afficherMessage(" ========================================================");
 		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
-		EntreesSorties.afficherMessage("| Nouveau Lecteur : 1                                    |");
-		EntreesSorties.afficherMessage("| Consulter Lecteur : 2                                  |");
+		EntreesSorties.afficherMessage("| Nouveau Lecteur    	: 1                              |");
+		EntreesSorties.afficherMessage("| Consulter Lecteur  	: 2                              |");
+		EntreesSorties.afficherMessage("| Emprunter un livre 	: 3                              |");
 		EntreesSorties.afficherMessage("| Retour Menu Principal : 0                              |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menuLect = EntreesSorties.lireEntier();
@@ -62,6 +63,9 @@ public void menuLecteur() {
 				case 2 : {
 					_bibliotheque.consulterReader();
 					break;
+				}
+				case 3:{
+                    _bibliotheque.BorrCopy();
 				}
 				default : {
 					break;
