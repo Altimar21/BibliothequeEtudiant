@@ -114,7 +114,7 @@ public class Bibliotheque implements Serializable
 		Reader L = unLecteur(numReader);
 
 		if (L!=null){
-			L.printReader();
+			System.out.println(L.toString());
 		}
 		else {
 			EntreesSorties.afficherMessage("Aucun lecteur n'est associe a ce numero.");

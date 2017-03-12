@@ -16,13 +16,11 @@ public class Borrow implements Serializable {
         this.dateRelease = dateRelease;
     }
 
-
     @Override
     public String toString() {
-        return "Borrow :" +
-                "reader=" + reader +
-                ", copy=" + copy +
-                ", dateRelease=" + dateRelease +
-                '}';
+        return "Borrow   :" +
+                "Lecteur      : " + reader +  "\n" +
+                "Exemplaire   : " + copy + "\n" +
+                "Date emprunt : " + dateRelease + "\n";
     }
 }

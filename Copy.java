@@ -32,6 +32,14 @@ public class Copy implements Serializable {
         }
     }
 
+    public Borrow getBorrow() {
+        return borrow;
+    }
+
+    public void setBorrow(Borrow borrow) {
+        this.borrow = borrow;
+    }
+
     public boolean isBorrCopy() {
         return borrCopy;
     }

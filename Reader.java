@@ -141,5 +141,26 @@ public class Reader implements Serializable
 
         public void setBorrow(Copy copy){
             borrow.add(new Borrow(this,copy, new GregorianCalendar()));
+            copy.setBorrow(this.borrow.lastElement());
         }
+
+        private String printBorrow(){
+            String r = "";
+            for(int i  =0; i < borrow.size();i++){
+                r = r + borrow.get(i).toString();
+            }
+            return r;
+        }
+
+    @Override
+    public String toString() {
+        return "Lecteur : " + "\n" +
+                "Prenom    : " + fName + "\n" +
+                "Nom       : " + lName + "\n" +
+                "Numero    : " + numReader + "\n" +
+                "DateNaiss : " + EntreesSorties.ecrireDate(_dateNaiss) + "\n" +
+                "Adress    : " + adress + "\n" +
+                "Numtel    : " + tel +  "\n" +
+                "Emprunt   : " + printBorrow() +"\n";
+    }
 }

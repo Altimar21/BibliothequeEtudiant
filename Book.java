@@ -50,10 +50,12 @@ public class Book implements Serializable {
         return null;
     }
 
+    //retourne l'exemplaire lier a l'id
     public Copy getCopy(int idCopy){
         return findCopy(idCopy);
     }
 
+    //retourne si il y a des exemplaire de ce livre
     public boolean getCopy(){
         return copy.isEmpty();
     }
@@ -65,7 +67,7 @@ public class Book implements Serializable {
     //retourne l'id du premier exemplaire empruntable
     public int getfirstBorrCoppy() {
         for (int i = 0; i <= copy.size(); i++) {
-            if (copy.get(i).isBorrCopy()) {
+            if (copy.get(i).isBorrCopy() && copy.get(i).getBorrow() == null) {
                 return copy.get(i).getIdCopy();
             }
         }
@@ -76,8 +78,8 @@ public class Book implements Serializable {
     public int nbBorrCopy(){
      //  return copy.size();
         int count = 0;
-        for (int i = 0; i < copy.size() ;i++){
-            if(copy.get(i).isBorrCopy()){
+        for (Copy aCopy : copy) {
+            if (aCopy.isBorrCopy() && aCopy.getBorrow() == null) {
                 count++;
             }
         }
