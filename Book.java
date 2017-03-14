@@ -71,4 +71,11 @@ public class Book {
         System.out.println("publique    : " + publicc);
         System.out.println("nbCopy      : " + nbCopy);
     }
+
+    public void printBookRed() {
+        System.out.println("Detail livre : \n");
+        System.out.println("title       : " + title );
+        System.out.println("numISBN     : " + numISBN);
+
+    }
 }

@@ -77,6 +77,7 @@ public class Bibliotheque implements Serializable
 
 		Reader L = new Reader(nom, prenom, numReader, dateNaiss, adresse, tel);
 		addReader(L, numReader);
+		L.printReader();
 	}
 
 	public void newCopy (){
@@ -84,7 +85,7 @@ public class Bibliotheque implements Serializable
 		Book B = getBook(ISBN);
 		if(B!=null)
 		{
-			B.toString();
+			B.printBook();
 			GregorianCalendar dateRecep = EntreesSorties.lireDate("Entrez la date de reception :");
 			boolean emprunt;
 			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empreintable ? (0 :non 1: Oui) :");
@@ -163,7 +164,7 @@ public class Bibliotheque implements Serializable
         int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book b = getBook(ISBN);
         if (b != null){
-            b.toString();
+            b.printBookRed();
             int idCopy = EntreesSorties.lireEntier("Entrez l'idCopy :");
             b.PrintCopy(idCopy);
         }else{
