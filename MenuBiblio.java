@@ -15,9 +15,11 @@ public void menuPrincipal() {
 	do {
 		EntreesSorties.afficherMessage(" ========================================================");
 		EntreesSorties.afficherMessage("|                   Menu Principal                       |");
-		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
+        EntreesSorties.afficherMessage("|                                                        |");
 		EntreesSorties.afficherMessage("| Menu Lecteur : 1                                       |");
-		EntreesSorties.afficherMessage("| Menu Livre : 2                                         |");
+		EntreesSorties.afficherMessage("| Menu Livre   : 2                                       |");
+        EntreesSorties.afficherMessage("| Menu Emprunt : 3                                       |");
+        EntreesSorties.afficherMessage("|                                                        |");
 		EntreesSorties.afficherMessage("| Quitter : 0                                            |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menu = EntreesSorties.lireEntier();
@@ -30,7 +32,9 @@ public void menuPrincipal() {
 				case 2:{
 					this.menuBook();
 				}
-				
+                case 3:{
+                    this.menuEmprunt();
+                }
 				default : {
 					break;
 				}
@@ -47,11 +51,13 @@ public void menuLecteur() {
 	Integer menuLect;
 	do {
 		EntreesSorties.afficherMessage(" ========================================================");
-		EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
-		EntreesSorties.afficherMessage("| Nouveau Lecteur    	: 1                              |");
-		EntreesSorties.afficherMessage("| Consulter Lecteur  	: 2                              |");
-		EntreesSorties.afficherMessage("| Emprunter un livre 	: 3                              |");
-		EntreesSorties.afficherMessage("| Retour Menu Principal : 0                              |");
+        EntreesSorties.afficherMessage("|                     Menu Lecteur                       |");
+        EntreesSorties.afficherMessage("|                                                        |");
+		EntreesSorties.afficherMessage("| Nouveau Lecteur    	    : 1                          |");
+		EntreesSorties.afficherMessage("| Consulter Lecteur  	    : 2                          |");
+        EntreesSorties.afficherMessage("| Consulter tous lecteurs   : 3                          |");
+        EntreesSorties.afficherMessage("|                                                        |");
+		EntreesSorties.afficherMessage("| Retour Menu Principal     : 0                          |");
 		EntreesSorties.afficherMessage(" ========================================================");
 		menuLect = EntreesSorties.lireEntier();
 			
@@ -65,7 +71,7 @@ public void menuLecteur() {
 					break;
 				}
 				case 3:{
-                    _bibliotheque.BorrCopy();
+                    _bibliotheque.consultListReader();
 				}
 				default : {
 					break;
@@ -74,16 +80,61 @@ public void menuLecteur() {
 	} while (menuLect != 0);	
 }
 
+    public void menuEmprunt() {
+        Integer menuLect;
+        do {
+            EntreesSorties.afficherMessage(" ========================================================");
+            EntreesSorties.afficherMessage("|                      Menu Emprunt                      |");
+            EntreesSorties.afficherMessage("|                                                        |");
+            EntreesSorties.afficherMessage("| Emprunter un livre            : 1                      |");
+            EntreesSorties.afficherMessage("| Rendre un livre    	        : 2                      |");
+            EntreesSorties.afficherMessage("| Consulter emprunt Lecteur 	: 3                      |");
+            EntreesSorties.afficherMessage("| Rappelle emprunt Lecteur   	: 4                      |");
+            EntreesSorties.afficherMessage("| Consulter tout emprunt        : 5                      |");
+            EntreesSorties.afficherMessage("|                                                        |");
+            EntreesSorties.afficherMessage("| Retour Menu Principal         : 0                      |");
+            EntreesSorties.afficherMessage(" ========================================================");
+            menuLect = EntreesSorties.lireEntier();
+
+            switch (menuLect){
+                case 1 : {
+                    _bibliotheque.BorrCopy();
+                    break;
+                }
+                case 2 : {
+                    _bibliotheque.returnCopy();
+                    break;
+                }
+                case 3:{
+                    _bibliotheque.consultBorrowReader();
+                }
+                case 4:{
+                    _bibliotheque.askReader();
+                }
+                case 5:{
+                    _bibliotheque.consultListBorrow();
+                }
+                default : {
+                    break;
+                }
+            }
+        } while (menuLect != 0);
+    }
+
 	public void menuBook() {
 		Integer menuBook;
 		do {
 			EntreesSorties.afficherMessage(" ========================================================");
-			EntreesSorties.afficherMessage("| Saisissez un numero correspondant :                    |");
-			EntreesSorties.afficherMessage("| Ajout d'un livre : 1                                   |");
-			EntreesSorties.afficherMessage("| Consulter un livre : 2                                 |");
-			EntreesSorties.afficherMessage("| Ajout d'un  exemplaire : 3                             |");
-			EntreesSorties.afficherMessage("| Consulter un exemplaire : 4                            |");
-			EntreesSorties.afficherMessage("| Retour Menu Principal : 0                              |");
+            EntreesSorties.afficherMessage("|                        Menu Livre                      |");
+            EntreesSorties.afficherMessage("|                                                        |");
+			EntreesSorties.afficherMessage("| Ajout d'un livre               : 1                     |");
+			EntreesSorties.afficherMessage("| Consulter un livre             : 2                     |");
+			EntreesSorties.afficherMessage("| Ajout d'un  exemplaire         : 3                     |");
+			EntreesSorties.afficherMessage("| Consulter un exemplaire        : 4                     |");
+            EntreesSorties.afficherMessage("| Consulter tout les Livre       : 5                     |");
+            EntreesSorties.afficherMessage("| Consulter tout les Exemplaire  : 6                     |");
+			EntreesSorties.afficherMessage("|                                                        |");
+            EntreesSorties.afficherMessage("| Retour Menu Principal   : 0                            |");
 			EntreesSorties.afficherMessage(" ========================================================");
 			menuBook = EntreesSorties.lireEntier();
 
@@ -103,6 +154,12 @@ public void menuLecteur() {
 				case 4 : {
 					_bibliotheque.consultCopyBook();
 				}
+                case 5 : {
+                    _bibliotheque.consultListBook();
+                }
+                case 6:{
+                   // _bibliotheque
+                }
 				default : {
 					break;
 				}

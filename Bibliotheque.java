@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Vector;
 
 
 // Classe de gestion de la Bibliotheque
@@ -84,7 +85,7 @@ public class Bibliotheque implements Serializable
 		Book B = getBook(ISBN);
 		if(B!=null)
 		{
-			B.toString();
+		//	B.toString();
 			GregorianCalendar dateRecep = EntreesSorties.lireDate("Entrez la date de reception :");
 			boolean emprunt;
 			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empreintable ? (0 :non 1: Oui) :");
@@ -96,7 +97,9 @@ public class Bibliotheque implements Serializable
 				emprunt = false;
 			}
 			B.addCopy(emprunt, dateRecep);
-		}
+		}else{
+		    System.out.println("Le livre n'existe pas");
+        }
 	}
 
 
@@ -114,7 +117,7 @@ public class Bibliotheque implements Serializable
 		Reader L = unLecteur(numReader);
 
 		if (L!=null){
-			System.out.println(L.toString());
+			L.display();
 		}
 		else {
 			EntreesSorties.afficherMessage("Aucun lecteur n'est associe a ce numero.");
@@ -125,7 +128,7 @@ public class Bibliotheque implements Serializable
 		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book b = getBook(ISBN);
 		if(b != null){
-		    System.out.println(b.toString());
+		    b.display();
         }else{
 		    System.out.println("Le Livre n'existe pas");
         }
@@ -142,18 +145,18 @@ public class Bibliotheque implements Serializable
 			int Public = EntreesSorties.lireEntier("Entrez le Publique 1: ENFANT, 2:ADO, 3:ADULTE:");
             Publiclec p = null;
 			switch (Public){
-                case 1:{
-                    p = p.ENFANT;
-                }
-                case 2:{
-                    p = p.ADO;
-                }
-                case 3:{
-                    p = p.ADULTE;
-                }
+                case 1:
+                    p = Publiclec.ENFANT;
+                    break;
+                case 2:
+                    p = Publiclec.ADO;
+                    break;
+                case 3:
+                    p = Publiclec.ADULTE;
+                    break;
             }
 			setBook(new Book(Author,DateRelease,Editor,ISBN,Title,p),ISBN);
-            System.out.println(_dicoBook.get(ISBN).toString());
+            _dicoBook.get(ISBN).display();
 		}else{
             System.out.println("Le Livre existe déjà");
         }
@@ -162,46 +165,173 @@ public class Bibliotheque implements Serializable
 	public void consultCopyBook(){
         int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book b = getBook(ISBN);
-        if (b != null){
-            b.toString();
-            int idCopy = EntreesSorties.lireEntier("Entrez l'idCopy :");
-            if(!b.getCopy()){
-                if(b.getCopy(idCopy) != null){
-                    b.PrintCopy(idCopy);
-                }else{
-                    System.out.println("Ce numero d'exmplaire n'exite pas");
-                }
-            }else{
-                System.out.println("Accun exemplaire n'est enregistrer pour ce livre");
-            }
-        }else{
-            System.out.println("Le Livre n'existe pas");
+        if (b == null) {
+            System.out.println("Le Livre avec l'isbn " + ISBN + "n'existe pas");
+            return;
+        }
+
+        int idCopy = EntreesSorties.lireEntier("Entrez l'idCopy :");
+
+        if(b.getCopy()){
+            System.out.println("Accun exemplaire n'est enregistrer pour ce livre");
+            return;
+        }
+
+        if(b.getCopy(idCopy) == null){
+            System.out.println("Ce numero d'exmplaire n'exite pas");
+            return;
+        }
+        b.PrintCopy(idCopy);
+    }
+
+    public void BorrCopy() {
+        Integer NumReader = EntreesSorties.lireEntier("Entrer le numero du lecteur :");
+        Reader reader = getReader(NumReader);
+
+
+        if (reader == null) {
+            System.out.println("Le lecteur n'existe pas");
+            return;
+        }
+
+        int ISBN = EntreesSorties.lireEntier("Enter numero ISBN :");
+        Book book = getBook(ISBN);
+
+        if (book == null) {
+            System.out.println("Le livre n'existe pas");
+            return;
+        }
+
+        if (book.getCopy()) {
+            System.out.println("Pas d'expemplaire de ce livre en stock");
+            return;
+        }
+
+        if (book.nbBorrCopy() == 0) {
+            System.out.println("Pas d'exmplaire emprintable");
+            return;
+        }
+
+        if (reader.getNbBorrow() > 5) {
+                System.out.println("Vous avez emprunter la maximum de livre (5)");
+               return;
+        }
+
+        Publiclec publicc = book.getPublicc();
+
+        if (publicc == Publiclec.ADULTE && reader.calculAge() < 16) {
+            System.out.println("Il faut être adulte pour emprunter ce livre");
+            return;
+        }
+
+        if (publicc == Publiclec.ADO && reader.calculAge() < 10) {
+            System.out.println("Il faut être ado pour emprunter ce livre");
+            return;
+        }
+
+        reader.setBorrow(book.getCopy(book.getfirstBorrCoppy()));
+        EntreesSorties.afficherMessage("Exemplaire du livre " + ISBN + " emprunté");
+    }
+
+    public void returnCopy(){
+        Integer NumReader = EntreesSorties.lireEntier("Entrer le numero du lecteur :");
+        Reader reader = getReader(NumReader);
+
+
+        if(reader == null) {
+            System.out.println("Le lecteur n'existe pas");
+            return;
+        }
+
+        int ISBN = EntreesSorties.lireEntier("Enter numero ISBN :");
+        Book book = getBook(ISBN);
+        if(book == null) {
+            System.out.println("Le livre n'existe pas");
+            return;
+        }
+        int idCopy = EntreesSorties.lireEntier("Numéro d'exemplaire : ");
+        Copy copy = book.getCopy(idCopy);
+        if (copy == null){
+            EntreesSorties.afficherMessage("L'exemplaire numero" + idCopy + " n'existe pas");
+            return;
+        }
+        Borrow borrow = copy.getBorrow();
+
+        if (borrow == null) {
+            EntreesSorties.afficherMessage("L'exemplaire numero" + idCopy + " n'est pas emprunté");
+            return;
+        }
+
+        borrow.removeBorrow();
+        EntreesSorties.afficherMessage("Exemplaire rendu");
+    }
+
+    public void consultBorrowReader(){
+        int numReader = EntreesSorties.lireEntier("Numéro de lecteur : ");
+        Reader reader = getReader(numReader);
+        if (reader == null){
+            System.out.println("Le numero "+ numReader + "ne correspond a aucun lecteur connu");
+            return;
+        }
+
+        if(reader.getNbBorrow() == 0){
+            System.out.println("Auccun emprunt effectuer par ce lecteur");
+            return;
+        }
+        for (Borrow b : reader.getBorrow()){
+           System.out.println(b.display());
         }
     }
 
-    public void BorrCopy(){
-	    Integer NumReader = EntreesSorties.lireEntier("Entrer le numero du lecteur :");
-        Reader reader = getReader(NumReader);
-        if(reader != null){
-        	int ISBN = EntreesSorties.lireEntier("Enter numero ISBN :");
-           Book book = getBook(ISBN);
-           if(book != null){
-               if(!book.getCopy()) {
-                 if  (book.nbBorrCopy() != 0) {
-                     reader.setBorrow(book.getCopy(book.getfirstBorrCoppy()));
-                 }else{
-                     System.out.println("Pas d'exmplaire emprintable");
-                 }
-               }else{
-                   System.out.println("Pas d'expemplaire de ce livre en stock");
-               }
-           }else{
-               System.out.println("Le livre n'existe pas");
-           }
-        }else{
-            System.out.println("Le lecteur n'existe pas");
+    public void askReader(){
+        for (Reader r : _dicoLecteur.values()) {
+            if (r.getNbBorrow() != 0) {
+                for (Borrow b : r.getBorrow()) {
+                    GregorianCalendar now = new GregorianCalendar();
+                    now.add(GregorianCalendar.DAY_OF_MONTH, -15);
+                    if (b.getDateReturn().before(now)) {
+                        b.display();
+                    }
+                }
+            }
         }
     }
+
+    public void consultListBook(){
+        for (Book b : _dicoBook.values()) {
+            EntreesSorties.afficherMessage("Livre  " + b.getTitle() + " : \tIsbn " + b.getNumISBN());
+        }
+    }
+
+    public void consultListBorrow(){
+        for (Reader r : _dicoLecteur.values()) {
+            if (r.getNbBorrow() != 0) {
+                for (Borrow b : r.getBorrow()) {
+                    b.displayAll();
+                }
+            }
+        }
+    }
+    public void consultListReader(){
+        for (Reader r : _dicoLecteur.values()) {
+            EntreesSorties.afficherMessage("Lecteur " + r.getNumLecteur() +":"+ "\t" + r.getAllName());
+        }
+    }
+
+    /*
+    public void consultListCopy(){
+        int ISBN = EntreesSorties.lireEntier("Enter numero ISBN :");
+        Book book = getBook(ISBN);
+
+        if (book == null) {
+            System.out.println("Le livre n'existe pas");
+            return;
+        }
+
+        for (int i =0; i <  book.getNbCopy() ;i++){
+
+        }
+    }*/
 
 // -----------------------------------------------
 	// Private

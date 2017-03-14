@@ -60,7 +60,7 @@ public class Book implements Serializable {
         return copy.isEmpty();
     }
 
-    private int getNbCopy(){
+    public int getNbCopy(){
         return copy.size();
     }
 
@@ -86,6 +86,18 @@ public class Book implements Serializable {
         return count;
     }
 
+    public Publiclec getPublicc() {
+        return publicc;
+    }
+
+    public int getNumISBN() {
+        return numISBN;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
 
     public void addCopy(boolean borrCopy, GregorianCalendar dateRecep){
         lastIdCopy++;
@@ -97,16 +109,14 @@ public class Book implements Serializable {
         this.copy.add(new Copy(borrCopy,dateRecep,idCopy, this));
     }
 
-
-    @Override
-    public String toString() {
-        return "Detail livre : "            + "\n" +
+    public void display() {
+        System.out.println( "Detail livre : "            + "\n" +
                 "author      : " + author   + "\n" +
                 "dateRelease : " + EntreesSorties.ecrireDate(dateRelease)+ "\n" +
                 "editor      : " + editor   + "\n" +
                 "numISBN     : " + numISBN  + "\n" +
                 "title       : " + title    + "\n" +
                 "publique    : " + publicc  + "\n" +
-                "nbCopy      : " + copy.size() ;
+                "nbCopy      : " + copy.size() );
     }
 }

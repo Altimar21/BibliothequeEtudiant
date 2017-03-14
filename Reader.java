@@ -1,5 +1,4 @@
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.*;
 
 // Classe de gestion de Reader
@@ -35,7 +34,6 @@ public class Reader implements Serializable
 			this.setDateNaiss(dateNaiss);
 			this.setAdresse(adress);
 			this.setTel(tel);
-
 			borrow = new Vector<>();
 		}
 
@@ -63,6 +61,10 @@ public class Reader implements Serializable
 			return _dateNaiss;
 		}
 
+		public int getNbBorrow(){
+		    return borrow.size();
+        }
+
 		public String getAdresse() {
 			return adress;
 		}
@@ -70,12 +72,20 @@ public class Reader implements Serializable
 		public String getTel() {
 			return tel;
 		}
-		// -----------------------------------------------
+
+    public Vector<Borrow> getBorrow() {
+        return borrow;
+    }
+        public String getAllName(){
+		    return getPrenom() + " " + getNom().toUpperCase();
+        }
+
+    // -----------------------------------------------
 			// Methodes
 		// -----------------------------------------------
 		
 		/*
-		 * La méthode afficherLecteur affiche l'ensemble des informations relatives � un lecteur.
+		 * La méthode afficherLecteur display l'ensemble des informations relatives � un lecteur.
 		 */
 		public void printReader()
 		{
@@ -106,6 +116,10 @@ public class Reader implements Serializable
 			}
 			return age;
 		}
+
+		public void removeBorrow(Borrow borrow){
+		    this.borrow.remove(borrow);
+        }
 	
 // -----------------------------------------------
 	// Private
@@ -146,21 +160,30 @@ public class Reader implements Serializable
 
         private String printBorrow(){
             String r = "";
-            for(int i  =0; i < borrow.size();i++){
+            System.out.println(borrow.size());
+            for(int i  = 0; i <= borrow.size();i++){
                 r = r + borrow.get(i).toString();
             }
             return r;
         }
 
-    @Override
-    public String toString() {
-        return "Lecteur : " + "\n" +
+    public void display() {
+        String r = "";
+        if(!borrow.isEmpty()) {
+            for (Borrow aBorrow : borrow) {
+              r = r + aBorrow.display();
+            }
+        }else{
+            r =  "Auccun emprunt";
+        }
+        System.out.println( "Lecteur : " + "\n" +
                 "Prenom    : " + fName + "\n" +
                 "Nom       : " + lName + "\n" +
                 "Numero    : " + numReader + "\n" +
                 "DateNaiss : " + EntreesSorties.ecrireDate(_dateNaiss) + "\n" +
                 "Adress    : " + adress + "\n" +
                 "Numtel    : " + tel +  "\n" +
-                "Emprunt   : " + printBorrow() +"\n";
+                "Emprunt   : " + r + "\n" );
+
     }
 }
