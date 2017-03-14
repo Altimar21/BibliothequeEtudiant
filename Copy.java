@@ -20,19 +20,17 @@ public class Copy {
     }
 
     private String BooltoString(boolean b){
-        if(borrCopy){
+        if(b){
            return "Oui";
         }
         else{
            return "Non";
         }
     }
-
-    @Override
-    public String toString() {
-        return "Detail exemplaire    : " +"\n" +
-                "empruntable  : " + BooltoString(borrCopy) + "\n" +
-                "dateRecep    : " + EntreesSorties.ecrireDate(dateRecep) +"\n" +
-                "idExemplaire : " + idCopy ;
+    public void printCopy() {
+        System.out.println("Detail exemplaire    : ");
+        System.out.println("empruntable  : " + BooltoString(borrCopy));
+        System.out.println("dateRecep    : " + EntreesSorties.ecrireDate(dateRecep));
+        System.out.println("idExemplaire : " + idCopy);
     }
 }

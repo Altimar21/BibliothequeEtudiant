@@ -76,7 +76,7 @@ public class Bibliotheque implements Serializable
 		EntreesSorties.afficherMessage("Fin de saisie, lecteur numéro : " + numReader);
 
 		Reader L = new Reader(nom, prenom, numReader, dateNaiss, adresse, tel);
-		lierLecteur(L, numReader);
+		addReader(L, numReader);
 	}
 
 	public void newCopy (){
@@ -107,11 +107,11 @@ public class Bibliotheque implements Serializable
 	 * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
 	 * renvoyé a l'utilisateur.
 	 */
-	public void consulterReader()
+	public void consultReader()
 	{
 		Integer numReader = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
 
-		Reader L = unLecteur(numReader);
+		Reader L = getReader(numReader);
 
 		if (L!=null){
 			L.printReader();
@@ -125,7 +125,7 @@ public class Bibliotheque implements Serializable
 		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book b = getBook(ISBN);
 		if(b != null){
-		    System.out.println(b.toString());
+		    b.printBook();
         }else{
 		    System.out.println("Le Livre n'existe pas");
         }
@@ -142,18 +142,18 @@ public class Bibliotheque implements Serializable
 			int Public = EntreesSorties.lireEntier("Entrez le Publique 1: ENFANT, 2:ADO, 3:ADULTE:");
             Publiclec p = null;
 			switch (Public){
-                case 1:{
-                    p = p.ADO;
-                }
-                case 2:{
+                case 1:
                     p = p.ENFANT;
-                }
-                case 3:{
+                	break;
+                case 2:
+                    p = p.ADO;
+                	break;
+                case 3:
                     p = p.ADULTE;
-                }
+                	break;
             }
 			setBook(new Book(Author,DateRelease,Editor,ISBN,Title,p),ISBN);
-            System.out.println(_dicoBook.get(ISBN).toString());
+            _dicoBook.get(ISBN).printBook();
 		}else{
             System.out.println("Le Livre existe déjà");
         }
@@ -191,18 +191,18 @@ public class Bibliotheque implements Serializable
 	// -----------------------------------------------
 
 	/*
-	 * La méthode unLecteur permet de rechercher dans la base de donnée de bibliotheque un objet
+	 * La méthode getReader permet de rechercher dans la base de donnée de bibliotheque un objet
 	 * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
 	 */
-	private Reader unLecteur(Integer numReader)
+	private Reader getReader(Integer numReader)
 	{
 		return _dicoLecteur.get(numReader);
 	}
 
 	/*
-	 * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
+	 * La méthode addReader permet d'ajouter un lecteur a la base de donnée de bibliotheque.
 	 */
-	private void lierLecteur(Reader L, Integer numReader)
+	private void addReader(Reader L, Integer numReader)
 	{
 		_dicoLecteur.put(numReader, L);
 	}

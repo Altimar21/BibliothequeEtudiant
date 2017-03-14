@@ -33,11 +33,10 @@ public class Book {
     public void PrintCopy(int idCopy){
         Copy c = getCopy(idCopy);
         if (c != null){
-            System.out.println(c.toString());
+            c.printCopy();
         }else{
             System.out.println("L'exemplaire n'exite pas");
         }
-
     }
 
     private Copy findCopy(int idCopy){
@@ -62,17 +61,14 @@ public class Book {
         Copy c = new Copy(borrCopy,dateRecep,idCopy);
         this.copy.add(c);
     }
-
-
-    @Override
-    public String toString() {
-        return "Detail livre : \n" +
-                "author      : " + author + "\n" +
-                "dateRelease : " + EntreesSorties.ecrireDate(dateRelease)+ "\n" +
-                "editor      : " + editor + "\n" +
-                "numISBN     : " + numISBN + "\n" +
-                "title       : " + title + "\n" +
-                "publique    : " + publicc +"\n" +
-                "nbCopy      : " + nbCopy ;
+    public void printBook() {
+        System.out.println("Detail livre : \n");
+        System.out.println("author      : " + author);
+        System.out.println("dateRelease : " + EntreesSorties.ecrireDate(dateRelease));
+        System.out.println("editor      : " + editor);
+        System.out.println("numISBN     : " + numISBN);
+        System.out.println("title       : " + title );
+        System.out.println("publique    : " + publicc);
+        System.out.println("nbCopy      : " + nbCopy);
     }
 }

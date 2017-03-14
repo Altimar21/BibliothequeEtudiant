@@ -29,45 +29,17 @@ public class Reader implements Serializable
 		
 		public Reader(String fName, String lName, Integer numReader, GregorianCalendar dateNaiss, String adress, String tel)
 		{
-			this.setNom(fName);
-			this.setPrenom(lName);
-			this.setNumLecteur(numReader);
-			this.setDateNaiss(dateNaiss);
-			this.setAdresse(adress);
-			this.setTel(tel);
+			this.fName = fName;
+			this.lName=lName;
+			this.numReader=numReader;
+			this._dateNaiss=dateNaiss;
+			this.adress=adress;
+			this.tel=tel;
 		}
 
 // -----------------------------------------------
 	// Public
 // -----------------------------------------------
-		
-		// -----------------------------------------------
-			//Getters
-		// -----------------------------------------------
-	
-		public String getNom() {
-			return fName;
-		}
-
-		public String getPrenom() {
-			return lName;
-		}
-
-		public Integer getNumLecteur() {
-			return numReader;
-		}
-		
-		public GregorianCalendar getDateNaiss() {
-			return _dateNaiss;
-		}
-
-		public String getAdresse() {
-			return adress;
-		}
-
-		public String getTel() {
-			return tel;
-		}
 		// -----------------------------------------------
 			// Methodes
 		// -----------------------------------------------
@@ -77,11 +49,11 @@ public class Reader implements Serializable
 		 */
 		public void printReader()
 		{
-			System.out.println("Numero lecteur : " + this.getNumLecteur());
-			System.out.println("Nom et prenom du lecteur: " + this.getNom() + " " + this.getPrenom());
+			System.out.println("Numero lecteur : " + this.numReader);
+			System.out.println("Nom et prenom du lecteur: " + this.fName + " " + this.lName);
 			System.out.println("Age : " + this.calculAge() + " ans");
-			System.out.println("Adresse : " + this.getAdresse());
-			System.out.println("Telephone : " + this.getTel());
+			System.out.println("Adresse : " + this.adress);
+			System.out.println("Telephone : " + this.tel);
 			EntreesSorties.afficherMessage("");
 		}
 
@@ -109,34 +81,6 @@ public class Reader implements Serializable
 // -----------------------------------------------
 	// Private
 // -----------------------------------------------
-
-		// -----------------------------------------------
-			//Setters
-		// -----------------------------------------------
-
-		private void setNom(String fName) {
-			this.fName = fName;
-		}
-
-		private void setPrenom(String prenom) {
-			this.lName = prenom;
-		}
-		
-		private void setNumLecteur(Integer numLecteur) {
-			this.numReader = numLecteur;
-		}
-
-		private void setDateNaiss(GregorianCalendar dateNaiss) {
-			this._dateNaiss = dateNaiss;
-		}
-
-		private void setAdresse(String adresse) {
-			this.adress = adresse;
-		}
-
-		private void setTel(String tel) {
-			this.tel = tel;
-		}
 		
 		
 }
