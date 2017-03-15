@@ -31,9 +31,11 @@ public void menuPrincipal() {
 				}
 				case 2:{
 					this.menuBook();
+					break;
 				}
                 case 3:{
                     this.menuEmprunt();
+                    break;
                 }
 				default : {
 					break;
@@ -81,7 +83,7 @@ public void menuLecteur() {
 }
 
     public void menuEmprunt() {
-        Integer menuLect;
+        Integer menuEmprunt;
         do {
             EntreesSorties.afficherMessage(" ========================================================");
             EntreesSorties.afficherMessage("|                      Menu Emprunt                      |");
@@ -94,9 +96,9 @@ public void menuLecteur() {
             EntreesSorties.afficherMessage("|                                                        |");
             EntreesSorties.afficherMessage("| Retour Menu Principal         : 0                      |");
             EntreesSorties.afficherMessage(" ========================================================");
-            menuLect = EntreesSorties.lireEntier();
+            menuEmprunt = EntreesSorties.lireEntier();
 
-            switch (menuLect){
+            switch (menuEmprunt){
                 case 1 : {
                     _bibliotheque.BorrCopy();
                     break;
@@ -107,18 +109,21 @@ public void menuLecteur() {
                 }
                 case 3:{
                     _bibliotheque.consultBorrowReader();
+                    break;
                 }
                 case 4:{
                     _bibliotheque.askReader();
+                    break;
                 }
                 case 5:{
                     _bibliotheque.consultListBorrow();
+                    break;
                 }
                 default : {
                     break;
                 }
             }
-        } while (menuLect != 0);
+        } while (menuEmprunt != 0);
     }
 
 	public void menuBook() {
@@ -132,7 +137,6 @@ public void menuLecteur() {
 			EntreesSorties.afficherMessage("| Ajout d'un  exemplaire         : 3                     |");
 			EntreesSorties.afficherMessage("| Consulter un exemplaire        : 4                     |");
             EntreesSorties.afficherMessage("| Consulter tout les Livre       : 5                     |");
-            EntreesSorties.afficherMessage("| Consulter tout les Exemplaire  : 6                     |");
 			EntreesSorties.afficherMessage("|                                                        |");
             EntreesSorties.afficherMessage("| Retour Menu Principal   : 0                            |");
 			EntreesSorties.afficherMessage(" ========================================================");
@@ -156,9 +160,6 @@ public void menuLecteur() {
 				}
                 case 5 : {
                     _bibliotheque.consultListBook();
-                }
-                case 6:{
-                   // _bibliotheque
                 }
 				default : {
 					break;

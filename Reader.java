@@ -64,7 +64,7 @@ public class Reader implements Serializable
 		public int getNbBorrow(){
 		    return borrow.size();
         }
-
+		
 		public String getAdresse() {
 			return adress;
 		}

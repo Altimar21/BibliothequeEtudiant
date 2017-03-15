@@ -288,8 +288,10 @@ public class Bibliotheque implements Serializable
             if (r.getNbBorrow() != 0) {
                 for (Borrow b : r.getBorrow()) {
                     GregorianCalendar now = new GregorianCalendar();
-                    now.add(GregorianCalendar.DAY_OF_MONTH, -15);
-                    if (b.getDateReturn().before(now)) {
+                    GregorianCalendar datereturn = b.getDateReturn();
+                    datereturn.add(GregorianCalendar.DAY_OF_MONTH, 8);
+                    if (datereturn.before(now)) {
+                        EntreesSorties.ecrireDate(datereturn);
                         b.display();
                     }
                 }

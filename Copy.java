@@ -14,6 +14,7 @@ public class Copy implements Serializable {
 
     /**
      *
+     *
      * @param borrCopy boolean
      * @param dateRecep GregorianCalendar
      * @param idCopy iny
@@ -36,8 +37,8 @@ public class Copy implements Serializable {
 
     /**
      *
-     * @param b
-     * @return
+     * @param  b prend un booleen
+     * @return retourne le string correspondant au booleen
      */
     private String BooltoString(boolean b){
         if(borrCopy){
