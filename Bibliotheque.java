@@ -85,6 +85,7 @@ public class Bibliotheque implements Serializable
 		Book B = getBook(ISBN);
 		if(B!=null)
 		{
+		//	B.toString();
 			GregorianCalendar dateRecep = EntreesSorties.lireDate("Entrez la date de reception :");
 			boolean emprunt;
 			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empruntable ? (0 :Non 1: Oui) :");
