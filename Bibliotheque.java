@@ -77,7 +77,7 @@ public class Bibliotheque implements Serializable
 		EntreesSorties.afficherMessage("Fin de saisie, lecteur numéro : " + numReader);
 
 		Reader L = new Reader(nom, prenom, numReader, dateNaiss, adresse, tel);
-		lierLecteur(L, numReader);
+		setReader(L, numReader);
 	}
 
 	public void newCopy (){
@@ -88,7 +88,7 @@ public class Bibliotheque implements Serializable
 		//	B.toString();
 			GregorianCalendar dateRecep = EntreesSorties.lireDate("Entrez la date de reception :");
 			boolean emprunt;
-			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empreintable ? (0 :non 1: Oui) :");
+			int empruntable = EntreesSorties.lireEntier("L'exemplaire est il empruntable ? (0 :Non 1: Oui) :");
 			if (empruntable==1)
 			{
 				emprunt = true;
@@ -110,17 +110,17 @@ public class Bibliotheque implements Serializable
 	 * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
 	 * renvoyé a l'utilisateur.
 	 */
-	public void consulterReader()
+	public void consultReader()
 	{
 		Integer numReader = EntreesSorties.lireEntier("Entrez le numero du lecteur : ");
 
-		Reader L = unLecteur(numReader);
+		Reader L = getReader(numReader);
 
 		if (L!=null){
 			L.display();
 		}
 		else {
-			EntreesSorties.afficherMessage("Aucun lecteur n'est associe a ce numero.");
+			EntreesSorties.afficherMessage("Aucun lecteur n'est associé a ce numero.");
 		}
 	}
 
@@ -138,11 +138,11 @@ public class Bibliotheque implements Serializable
 		Integer ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book B = getBook(ISBN);
 		if(B==null){
-			String Author = EntreesSorties.lireChaine("Entrez l'autheur :");
-            GregorianCalendar DateRelease = EntreesSorties.lireDate("Entrer une date :");
+			String Author = EntreesSorties.lireChaine("Entrez l'auteur :");
+            GregorianCalendar DateRelease = EntreesSorties.lireDate("Entrez une date :");
 			String Editor = EntreesSorties.lireChaine("Entrez l'editeur :");
-			String Title = EntreesSorties.lireChaine("Entrez le Titre :");
-			int Public = EntreesSorties.lireEntier("Entrez le Publique 1: ENFANT, 2:ADO, 3:ADULTE:");
+			String Title = EntreesSorties.lireChaine("Entrez le titre :");
+			int Public = EntreesSorties.lireEntier("Entrez le Publique 1:ENFANT, 2:ADO, 3:ADULTE:");
             Publiclec p = null;
 			switch (Public){
                 case 1:
@@ -173,12 +173,12 @@ public class Bibliotheque implements Serializable
         int idCopy = EntreesSorties.lireEntier("Entrez l'idCopy :");
 
         if(b.getCopy()){
-            System.out.println("Accun exemplaire n'est enregistrer pour ce livre");
+            System.out.println("Aucun exemplaire n'est enregistré pour ce livre");
             return;
         }
 
         if(b.getCopy(idCopy) == null){
-            System.out.println("Ce numero d'exmplaire n'exite pas");
+            System.out.println("Ce numero d'exemplaire n'existe pas");
             return;
         }
         b.PrintCopy(idCopy);
@@ -194,7 +194,7 @@ public class Bibliotheque implements Serializable
             return;
         }
 
-        int ISBN = EntreesSorties.lireEntier("Enter numero ISBN :");
+        int ISBN = EntreesSorties.lireEntier("Entrez le numero ISBN :");
         Book book = getBook(ISBN);
 
         if (book == null) {
@@ -203,17 +203,17 @@ public class Bibliotheque implements Serializable
         }
 
         if (book.getCopy()) {
-            System.out.println("Pas d'expemplaire de ce livre en stock");
+            System.out.println("Pas d'exemplaire de ce livre en stock");
             return;
         }
 
         if (book.nbBorrCopy() == 0) {
-            System.out.println("Pas d'exmplaire emprintable");
+            System.out.println("Pas d'exemplaire empruntable");
             return;
         }
 
         if (reader.getNbBorrow() > 5) {
-                System.out.println("Vous avez emprunter la maximum de livre (5)");
+                System.out.println("Vous avez emprunté la maximum de livre (5)");
                return;
         }
 
@@ -234,7 +234,7 @@ public class Bibliotheque implements Serializable
     }
 
     public void returnCopy(){
-        Integer NumReader = EntreesSorties.lireEntier("Entrer le numero du lecteur :");
+        Integer NumReader = EntreesSorties.lireEntier("Entrez le numero du lecteur :");
         Reader reader = getReader(NumReader);
 
 
@@ -243,7 +243,7 @@ public class Bibliotheque implements Serializable
             return;
         }
 
-        int ISBN = EntreesSorties.lireEntier("Enter numero ISBN :");
+        int ISBN = EntreesSorties.lireEntier("Entrez numero ISBN :");
         Book book = getBook(ISBN);
         if(book == null) {
             System.out.println("Le livre n'existe pas");
@@ -275,7 +275,7 @@ public class Bibliotheque implements Serializable
         }
 
         if(reader.getNbBorrow() == 0){
-            System.out.println("Auccun emprunt effectuer par ce lecteur");
+            System.out.println("Aucun emprunt effectué par ce lecteur");
             return;
         }
         for (Borrow b : reader.getBorrow()){
@@ -316,7 +316,7 @@ public class Bibliotheque implements Serializable
     }
     public void consultListReader(){
         for (Reader r : _dicoLecteur.values()) {
-            EntreesSorties.afficherMessage("Lecteur " + r.getNumLecteur() +":"+ "\t" + r.getAllName());
+            EntreesSorties.afficherMessage("Lecteur " + r.getNumReader() +":"+ "\t" + r.getAllName());
         }
     }
 
@@ -359,15 +359,10 @@ public class Bibliotheque implements Serializable
 	 * La méthode unLecteur permet de rechercher dans la base de donnée de bibliotheque un objet
 	 * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
 	 */
-	private Reader unLecteur(Integer numReader)
-	{
-		return _dicoLecteur.get(numReader);
-	}
-
 	/*
-	 * La méthode lierLecteur permet d'ajouter un lecteur a la base de donnée de bibliotheque.
+	 * La méthode setReader permet d'ajouter un lecteur a la base de donnée de bibliotheque.
 	 */
-	private void lierLecteur(Reader L, Integer numReader)
+	private void setReader(Reader L, Integer numReader)
 	{
 		_dicoLecteur.put(numReader, L);
 	}

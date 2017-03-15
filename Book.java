@@ -111,12 +111,12 @@ public class Book implements Serializable {
 
     public void display() {
         System.out.println( "Detail livre : "            + "\n" +
-                "Auteur        : " + author   + "\n" +
-                "Date livre    : " + EntreesSorties.ecrireDate(dateRelease)+ "\n" +
-                "Editeur       : " + editor   + "\n" +
-                "ISBN          : " + numISBN  + "\n" +
-                "Titre         : " + title    + "\n" +
-                "Publique      : " + publicc  + "\n" +
-                "Nb exemplaire : " + copy.size() );
+                            "Auteur        : " + author   + "\n" +
+                            "Date livre    : " + EntreesSorties.ecrireDate(dateRelease)+ "\n" +
+                            "Editeur       : " + editor   + "\n" +
+                            "ISBN          : " + numISBN  + "\n" +
+                            "Titre         : " + title    + "\n" +
+                            "Publique      : " + publicc  + "\n" +
+                            "Nb exemplaire : " + copy.size() );
     }
 }

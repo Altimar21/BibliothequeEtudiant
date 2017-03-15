@@ -28,12 +28,12 @@ public class Reader implements Serializable
 		
 		public Reader(String fName, String lName, Integer numReader, GregorianCalendar dateNaiss, String adress, String tel)
 		{
-			this.setNom(fName);
-			this.setPrenom(lName);
-			this.setNumLecteur(numReader);
-			this.setDateNaiss(dateNaiss);
-			this.setAdresse(adress);
-			this.setTel(tel);
+			this.fName = fName;
+			this.lName = lName;
+			this.numReader = numReader;
+			this._dateNaiss = dateNaiss;
+			this.adress = adress;
+			this.tel = tel;
 			borrow = new Vector<>();
 		}
 
@@ -44,40 +44,28 @@ public class Reader implements Serializable
 		// -----------------------------------------------
 			//Getters
 		// -----------------------------------------------
-	
-		public String getNom() {
-			return fName;
-		}
 
-		public String getPrenom() {
-			return lName;
-		}
 
-		public Integer getNumLecteur() {
-			return numReader;
-		}
-		
-		public GregorianCalendar getDateNaiss() {
-			return _dateNaiss;
-		}
 
 		public int getNbBorrow(){
 		    return borrow.size();
         }
-		
-		public String getAdresse() {
-			return adress;
+
+		public String getfName() {
+			return fName;
 		}
 
-		public String getTel() {
-			return tel;
+		public String getlName() {
+			return lName;
 		}
 
-    public Vector<Borrow> getBorrow() {
+		public int getNumReader() { return numReader; }
+
+    	public Vector<Borrow> getBorrow() {
         return borrow;
     }
         public String getAllName(){
-		    return getPrenom() + " " + getNom().toUpperCase();
+		    return lName + " " + fName.toUpperCase();
         }
 
     // -----------------------------------------------
@@ -90,11 +78,11 @@ public class Reader implements Serializable
 		public void printReader()
 		{
 
-			System.out.println("Numero lecteur : " + this.getNumLecteur());
-			System.out.println("Nom et prenom du lecteur: " + this.getNom() + " " + this.getPrenom());
+			System.out.println("Numero lecteur : " + numReader);
+			System.out.println("Nom et prenom du lecteur: " + getAllName());
 			System.out.println("Age : " + this.calculAge() + " ans");
-			System.out.println("Adresse : " + this.getAdresse());
-			System.out.println("Telephone : " + this.getTel());
+			System.out.println("Adresse : " + adress);
+			System.out.println("Telephone : " + tel);
 			EntreesSorties.afficherMessage("");
 		}
 
@@ -129,29 +117,7 @@ public class Reader implements Serializable
 			//Setters
 		// -----------------------------------------------
 
-		private void setNom(String fName) {
-			this.fName = fName;
-		}
 
-		private void setPrenom(String prenom) {
-			this.lName = prenom;
-		}
-		
-		private void setNumLecteur(Integer numLecteur) {
-			this.numReader = numLecteur;
-		}
-
-		private void setDateNaiss(GregorianCalendar dateNaiss) {
-			this._dateNaiss = dateNaiss;
-		}
-
-		private void setAdresse(String adresse) {
-			this.adress = adresse;
-		}
-
-		private void setTel(String tel) {
-			this.tel = tel;
-		}
 
         public void setBorrow(Copy copy){
             borrow.add(new Borrow(this,copy, new GregorianCalendar()));
@@ -174,7 +140,7 @@ public class Reader implements Serializable
               r = r + aBorrow.display();
             }
         }else{
-            r =  "Auccun emprunt";
+            r =  "Aucun emprunt";
         }
         System.out.println( "Lecteur : " + "\n" +
                 "Prenom    : " + fName + "\n" +

@@ -48,8 +48,8 @@ public class Borrow implements Serializable {
     }
 
     public String display() {
-        return  reader.getNom()                   + "\t" +
-                reader.getPrenom()                + "\t" +
+        return  reader.getfName()                   + "\t" +
+                reader.getlName()                + "\t" +
                 this.copy.getBook().getNumISBN()  + "\t" +
                 this.copy.getBook().getTitle()    + "\t" +
                 this.copy.getIdCopy()             + "\t" +
@@ -58,7 +58,7 @@ public class Borrow implements Serializable {
     }
     public void displayAll(){
         EntreesSorties.afficherMessage("Lecteur             : " + reader.getAllName());
-        EntreesSorties.afficherMessage("Num Lecteur         : " + reader.getNumLecteur());
+        EntreesSorties.afficherMessage("Num Lecteur         : " + reader.getNumReader());
         EntreesSorties.afficherMessage("Num ISBN            : " + copy.getBook().getNumISBN());
         EntreesSorties.afficherMessage("Titre               :" + copy.getBook().getTitle() );
         EntreesSorties.afficherMessage("Numero d'exemplaire : " + copy.getIdCopy() );

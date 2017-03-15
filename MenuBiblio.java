@@ -69,7 +69,7 @@ public void menuLecteur() {
 					break;
 				}
 				case 2 : {
-					_bibliotheque.consulterReader();
+					_bibliotheque.consultReader();
 					break;
 				}
 				case 3:{
