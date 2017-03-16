@@ -6,14 +6,24 @@ import java.util.GregorianCalendar;
  * Package name : PACKAGE_NAME.
  */
 public class Copy implements Serializable {
+
+
+    // -----------------------------------------------
+    //Attributs
+    // -----------------------------------------------
+
     private boolean borrCopy;
     private GregorianCalendar dateRecep;
     private int idCopy;
     private Book book;
     private Borrow borrow;
 
+    // -----------------------------------------------
+    //Constructeur
+    // -----------------------------------------------
+
     /**
-     *
+     * Crée un exemplaire.
      *
      * @param borrCopy boolean
      * @param dateRecep GregorianCalendar
@@ -25,9 +35,32 @@ public class Copy implements Serializable {
         this.dateRecep = dateRecep;
         this.idCopy = idCopy;
         this.book = book;
+
+        this.borrow = null;
     }
+// -----------------------------------------------
+// Public
+// -----------------------------------------------
+
+
+    // -----------------------------------------------
+    //Setters
+    // -----------------------------------------------
 
     /**
+     * Modifie l'emprunt de cet exemplaire
+     *
+     * @param borrow
+     */
+    public void setBorrow(Borrow borrow) {
+        this.borrow = borrow;
+    }
+
+    // -----------------------------------------------
+    //Getters
+    // -----------------------------------------------
+    /**
+     * Retourne l'identifiant de l'exemplaire
      *
      * @return id Exemplaire
      */
@@ -36,20 +69,7 @@ public class Copy implements Serializable {
     }
 
     /**
-     *
-     * @param  b prend un booleen
-     * @return retourne le string correspondant au booleen
-     */
-    private String BooltoString(boolean b){
-        if(borrCopy){
-           return "Oui";
-        }
-        else{
-           return "Non";
-        }
-    }
-
-    /**
+     * Retourne l'emprunt fais sur cet exemplaire
      *
      * @return
      */
@@ -57,15 +77,24 @@ public class Copy implements Serializable {
         return borrow;
     }
 
-    /**
-     *
-     * @param borrow
-     */
-    public void setBorrow(Borrow borrow) {
-        this.borrow = borrow;
-    }
 
     /**
+     * Retourne le livre lier a cet exemplaire
+     *
+     * @return
+     */
+    public Book getBook() {
+        return book;
+    }
+
+    // -----------------------------------------------
+    // Methodes
+    // -----------------------------------------------
+
+
+
+    /**
+     * Retourne l'etat de l'emprunt de l'exemplaire
      *
      * @return
      */
@@ -74,14 +103,7 @@ public class Copy implements Serializable {
     }
 
     /**
-     *
-     * @return
-     */
-    public Book getBook() {
-        return book;
-    }
-
-    /**
+     * Retourne les details de l'exemplaire
      *
      * @return
      */
@@ -91,5 +113,28 @@ public class Copy implements Serializable {
                 "empruntable  : " + BooltoString(borrCopy) + "\n" +
                 "dateRecep    : " + EntreesSorties.ecrireDate(dateRecep) +"\n" +
                 "idExemplaire : " + idCopy ;
+    }
+
+
+// -----------------------------------------------
+// Private
+// -----------------------------------------------
+    // -----------------------------------------------
+    // Methodes
+    // -----------------------------------------------
+
+    /**
+     * Retourne "Oui" si b = true ou "Non" si b = false
+     *
+     * @param  b
+     * @return retourne le string correspondant au booleen
+     */
+    private String BooltoString(boolean b){
+        if(borrCopy){
+            return "Oui";
+        }
+        else{
+            return "Non";
+        }
     }
 }

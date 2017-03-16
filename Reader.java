@@ -3,6 +3,10 @@ import java.util.*;
 
 // Classe de gestion de Reader
 
+/**
+ * Classe de Gestion des lecteurs
+ * @author Julien
+ */
 public class Reader implements Serializable
 {
 	
@@ -25,7 +29,17 @@ public class Reader implements Serializable
 	// -----------------------------------------------
 		//Constructeur
 	// -----------------------------------------------
-		
+
+	/**
+	 * Crée un Lecteur
+	 *
+	 * @param fName
+	 * @param lName
+	 * @param numReader
+	 * @param dateNaiss
+	 * @param adress
+	 * @param tel
+	 */
 		public Reader(String fName, String lName, Integer numReader, GregorianCalendar dateNaiss, String adress, String tel)
 		{
 			this.fName = fName;
@@ -40,54 +54,98 @@ public class Reader implements Serializable
 // -----------------------------------------------
 	// Public
 // -----------------------------------------------
-		
-		// -----------------------------------------------
-			//Getters
-		// -----------------------------------------------
 
 
+    // -----------------------------------------------
+    //Setters
+    // -----------------------------------------------
 
+    /**
+     * Permet d'ajouté un emprunt a la liste de ce lecteur
+     * @param copy
+     */
+    public void setBorrow(Copy copy){
+        borrow.add(new Borrow(this,copy, new GregorianCalendar()));
+        copy.setBorrow(this.borrow.lastElement());
+    }
+
+
+    // -----------------------------------------------
+        //Getters
+    // -----------------------------------------------
+
+
+		/**
+		 * Retourne le nombre d'emprunt du lecteur
+		 *
+		 * @return
+		 */
 		public int getNbBorrow(){
 		    return borrow.size();
         }
 
+		/**
+		 * Retourne le prenom du lecteur
+		 *
+		 * @return
+		 */
 		public String getfName() {
-			return fName;
-		}
+				return fName;
+			}
 
+		/**
+		 * Retourne le nom du lecteur
+		 * @return
+		 */
 		public String getlName() {
 			return lName;
 		}
 
+		/**
+		 * Retourne le numero de ce Lecteur
+		 * @return
+		 */
 		public int getNumReader() { return numReader; }
 
-    	public Vector<Borrow> getBorrow() {
+		/**
+		 * Retourne le tableau contenant tout les emprunts effectués par ce lecteur
+		 * @return
+		 */
+		public Vector<Borrow> getBorrow() {
         return borrow;
-    }
-        public String getAllName(){
+    	}
+
+		/**
+		 * Retourne le nom complet du lecteur
+		 * @return
+		 */
+		public String getAllName(){
 		    return lName + " " + fName.toUpperCase();
         }
 
+
     // -----------------------------------------------
-			// Methodes
-		// -----------------------------------------------
+    // Methodes
+    // -----------------------------------------------
 		
-		/*
+
+
+		/**
 		 * La méthode afficherLecteur display l'ensemble des informations relatives � un lecteur.
 		 */
 		public void printReader()
-		{
+			{
 
-			System.out.println("Numero lecteur : " + numReader);
-			System.out.println("Nom et prenom du lecteur: " + getAllName());
-			System.out.println("Age : " + this.calculAge() + " ans");
-			System.out.println("Adresse : " + adress);
-			System.out.println("Telephone : " + tel);
-			EntreesSorties.afficherMessage("");
-		}
+				System.out.println("Numero lecteur : " + numReader);
+				System.out.println("Nom et prenom du lecteur: " + getAllName());
+				System.out.println("Age : " + this.calculAge() + " ans");
+				System.out.println("Adresse : " + adress);
+				System.out.println("Telephone : " + tel);
+				EntreesSorties.afficherMessage("");
+			}
 
 		
-		/*
+		/**
 		 * la m�thode calculAge permet de d�terminer l'age des lecteurs grace a leur date de naissance
 		 * et la date actuelle. De cette fa�on, il n'y a pas de mise a jour a faire sur l'age des lecteurs.
 		 */
@@ -105,8 +163,13 @@ public class Reader implements Serializable
 			return age;
 		}
 
+		/**
+		 * La methode suprime un emprunt de la liste.
+		 * Elle est exucuté lorsque toute les conditions pour rendre un exemplaire sont remplies
+		 * @param borrow
+		 */
 		public void removeBorrow(Borrow borrow){
-		    this.borrow.remove(borrow);
+				this.borrow.remove(borrow);
         }
 	
 // -----------------------------------------------
@@ -118,21 +181,22 @@ public class Reader implements Serializable
 		// -----------------------------------------------
 
 
-
-        public void setBorrow(Copy copy){
-            borrow.add(new Borrow(this,copy, new GregorianCalendar()));
-            copy.setBorrow(this.borrow.lastElement());
+		/**
+		 * Retourne sous la forme de String tout les emprunt du lecteur
+		 * @return
+		 */
+		private String printBorrow(){
+				String r = "";
+				System.out.println(borrow.size());
+				for(int i  = 0; i <= borrow.size();i++){
+					r = r + borrow.get(i).toString();
+				}
+				return r;
         }
 
-        private String printBorrow(){
-            String r = "";
-            System.out.println(borrow.size());
-            for(int i  = 0; i <= borrow.size();i++){
-                r = r + borrow.get(i).toString();
-            }
-            return r;
-        }
-
+    /**
+     * Affiche les details du lecteur
+     */
     public void display() {
         String r = "";
         if(!borrow.isEmpty()) {

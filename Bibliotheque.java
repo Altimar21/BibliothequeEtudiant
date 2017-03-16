@@ -2,18 +2,19 @@ import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Vector;
 
-
-// Classe de gestion de la Bibliotheque
-
+/**
+ * Classe de gestion de la Bibliotheque
+ *
+ * @author Julien
+ */
 public class Bibliotheque implements Serializable 
 {
 	
 	private static final long serialVersionUID = 262L;
 
 	// -----------------------------------------------
-		//Attributs
+    //Attributs
 	// -----------------------------------------------
 		private int lastNumReader = 0;
 		private HashMap<Integer, Reader> _dicoLecteur;
@@ -24,7 +25,7 @@ public class Bibliotheque implements Serializable
 		 */
 	
 	// -----------------------------------------------
-		//Constructeur
+    //Constructeur
 	// -----------------------------------------------
 	
 
@@ -38,10 +39,10 @@ public class Bibliotheque implements Serializable
 // -----------------------------------------------
 
 		// -----------------------------------------------
-			// Mï¿½thodes
+			// Méthodes
 		// -----------------------------------------------
 
-		/*
+		/**
 		 * La méthode nouveauLecteur permet de créé un lecteur en demandant la saisie de son numéro
 		 * nom, prénom, date de naissance, adresse et numéro de téléphone.
 		 * L'age doit être compris entre 3 et 110 ans
@@ -80,6 +81,9 @@ public class Bibliotheque implements Serializable
 		setReader(L, numReader);
 	}
 
+    /**
+     * Ajoute un exemplaire d'un livre. Il faut que le livre existe
+     */
 	public void newCopy (){
 		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN du livre :");
 		Book B = getBook(ISBN);
@@ -104,7 +108,7 @@ public class Bibliotheque implements Serializable
 
 
 
-	/*
+	/**
 	 * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
 	 * un lecteur, par la saisie de son identifiant (numéro de lecteur).
 	 * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
@@ -124,6 +128,9 @@ public class Bibliotheque implements Serializable
 		}
 	}
 
+    /**
+     * Affiche les information relative a un livre
+     */
 	public void consultBook(){
 		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book b = getBook(ISBN);
@@ -134,6 +141,9 @@ public class Bibliotheque implements Serializable
         }
 	}
 
+    /**
+     * Ajoute un livre dans la liste. Il faut renseigné tout les details de celui-ci
+     */
 	public void newBook(){
 		Integer ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book B = getBook(ISBN);
@@ -162,6 +172,9 @@ public class Bibliotheque implements Serializable
         }
 	}
 
+    /**
+     * Permet de consulter un exemplaire d'un livre
+     */
 	public void consultCopyBook(){
         int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book b = getBook(ISBN);
@@ -184,7 +197,10 @@ public class Bibliotheque implements Serializable
         b.PrintCopy(idCopy);
     }
 
-    public void BorrCopy() {
+    /**
+     * Permet a un lecteur d'emprunté un exemplaire d'un livre
+     */
+    public void borrCopy() {
         Integer NumReader = EntreesSorties.lireEntier("Entrer le numero du lecteur :");
         Reader reader = getReader(NumReader);
 
@@ -233,6 +249,9 @@ public class Bibliotheque implements Serializable
         EntreesSorties.afficherMessage("Exemplaire du livre " + ISBN + " emprunté");
     }
 
+    /**
+     * Permet de rendre un exemplaire emprunté par un lecteur
+     */
     public void returnCopy(){
         Integer NumReader = EntreesSorties.lireEntier("Entrez le numero du lecteur :");
         Reader reader = getReader(NumReader);
@@ -283,7 +302,7 @@ public class Bibliotheque implements Serializable
         }
     }
 
-    public void askReader(){
+    public void reviveReader(){
         for (Reader r : _dicoLecteur.values()) {
             if (r.getNbBorrow() != 0) {
                 for (Borrow b : r.getBorrow()) {
@@ -320,21 +339,6 @@ public class Bibliotheque implements Serializable
         }
     }
 
-    /*
-    public void consultListCopy(){
-        int ISBN = EntreesSorties.lireEntier("Enter numero ISBN :");
-        Book book = getBook(ISBN);
-
-        if (book == null) {
-            System.out.println("Le livre n'existe pas");
-            return;
-        }
-
-        for (int i =0; i <  book.getNbCopy() ;i++){
-
-        }
-    }*/
-
 // -----------------------------------------------
 	// Private
 // -----------------------------------------------
@@ -355,11 +359,11 @@ public class Bibliotheque implements Serializable
 		// Mï¿½thodes
 	// -----------------------------------------------
 
-	/*
+	/**
 	 * La méthode unLecteur permet de rechercher dans la base de donnée de bibliotheque un objet
 	 * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
-	 */
-	/*
+	 *
+     *
 	 * La méthode setReader permet d'ajouter un lecteur a la base de donnée de bibliotheque.
 	 */
 	private void setReader(Reader L, Integer numReader)
@@ -371,7 +375,7 @@ public class Bibliotheque implements Serializable
     }
 
 
-	/*
+	/**
 	 * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
 	 * pour eventuellement les relancer.
 	 */

@@ -100,7 +100,7 @@ public void menuLecteur() {
 
             switch (menuEmprunt){
                 case 1 : {
-                    _bibliotheque.BorrCopy();
+                    _bibliotheque.borrCopy();
                     break;
                 }
                 case 2 : {
@@ -112,7 +112,7 @@ public void menuLecteur() {
                     break;
                 }
                 case 4:{
-                    _bibliotheque.askReader();
+                    _bibliotheque.reviveReader();
                     break;
                 }
                 case 5:{
