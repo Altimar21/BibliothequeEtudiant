@@ -35,7 +35,7 @@ public enum Publiclec {
     // -----------------------------------------------
     /**
      * Retourne l'enum en String
-     * @return
+     * @return String
      */
     public String toString(){
             return name;

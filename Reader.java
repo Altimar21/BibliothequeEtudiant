@@ -78,7 +78,7 @@ public class Reader implements Serializable
 		/**
 		 * Retourne le nombre d'emprunt du lecteur
 		 *
-		 * @return
+		 * @return Nombre d'emprunt (int)
 		 */
 		public int getNbBorrow(){
 		    return borrow.size();
@@ -87,7 +87,7 @@ public class Reader implements Serializable
 		/**
 		 * Retourne le prenom du lecteur
 		 *
-		 * @return
+		 * @return Prenom (String)
 		 */
 		public String getfName() {
 				return fName;
@@ -95,7 +95,8 @@ public class Reader implements Serializable
 
 		/**
 		 * Retourne le nom du lecteur
-		 * @return
+         *
+		 * @return Nom (String)
 		 */
 		public String getlName() {
 			return lName;
@@ -103,13 +104,15 @@ public class Reader implements Serializable
 
 		/**
 		 * Retourne le numero de ce Lecteur
-		 * @return
+         *
+		 * @return Numero Lecteur
 		 */
 		public int getNumReader() { return numReader; }
 
 		/**
 		 * Retourne le tableau contenant tout les emprunts effectués par ce lecteur
-		 * @return
+         *
+		 * @return Tableau emprunt lecteur (Vector<Borrow>)
 		 */
 		public Vector<Borrow> getBorrow() {
         return borrow;
@@ -117,7 +120,8 @@ public class Reader implements Serializable
 
 		/**
 		 * Retourne le nom complet du lecteur
-		 * @return
+         *
+		 * @return Nom complet avec le nom en majuscule (String)
 		 */
 		public String getAllName(){
 		    return lName + " " + fName.toUpperCase();

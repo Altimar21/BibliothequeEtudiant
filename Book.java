@@ -76,10 +76,10 @@ public class Book implements Serializable {
 
     /**
      * Retourne le nombre d'exmplaire empruntable
-     * @return
+     *
+     * @return nombre exemplaires
      */
     public int nbBorrCopy(){
-        //  return copy.size();
         int count = 0;
         for (Copy aCopy : copy) {
             if (aCopy.isBorrCopy() && aCopy.getBorrow() == null) {
@@ -121,7 +121,7 @@ public class Book implements Serializable {
     /**
      * Retourne l'exemplaire lier a un identifiant
      * @param idCopy
-     * @return
+     * @return Copy
      */
     public Copy getCopy(int idCopy){
         for (int i = 0; i <= copy.size() ;i++){
@@ -136,7 +136,7 @@ public class Book implements Serializable {
     /**
      * Retourne true si il y a des exemplaire de ce livre en stock
      *
-     * @return
+     * @return true ou false
      */
     public boolean getCopy(){
         return copy.isEmpty();
@@ -145,7 +145,7 @@ public class Book implements Serializable {
     /**
      * Retourne l'identifiant du premier exemplaire empruntable
      * 
-     * @return
+     * @return identifiant d'un exemplaire
      */
     public int getfirstBorrCoppy() {
         for (int i = 0; i <= copy.size(); i++) {
@@ -159,7 +159,7 @@ public class Book implements Serializable {
     /**
      * Retourne le type de publique lier a ce livre
      *
-     * @return
+     * @return le publique
      */
     public Publiclec getPublicc() {
         return publicc;
@@ -168,7 +168,7 @@ public class Book implements Serializable {
     /**
      * Retourne le numero ISBN de ce livre
      *
-     * @return
+     * @return ISBN
      */
     public int getNumISBN() {
         return numISBN;
@@ -177,7 +177,7 @@ public class Book implements Serializable {
     /**
      * Retourne le titre de ce livre
      *
-     * @return
+     * @return Titre
      */
     public String getTitle() {
         return title;

@@ -71,7 +71,7 @@ public class Copy implements Serializable {
     /**
      * Retourne l'emprunt fais sur cet exemplaire
      *
-     * @return
+     * @return Emprunt (borrow)
      */
     public Borrow getBorrow() {
         return borrow;
@@ -81,7 +81,7 @@ public class Copy implements Serializable {
     /**
      * Retourne le livre lier a cet exemplaire
      *
-     * @return
+     * @return Livre (Book)
      */
     public Book getBook() {
         return book;
@@ -96,7 +96,7 @@ public class Copy implements Serializable {
     /**
      * Retourne l'etat de l'emprunt de l'exemplaire
      *
-     * @return
+     * @return true ou false si emprunté
      */
     public boolean isBorrCopy() {
         return borrCopy;
@@ -105,7 +105,7 @@ public class Copy implements Serializable {
     /**
      * Retourne les details de l'exemplaire
      *
-     * @return
+     * @return concaténation de string
      */
     @Override
     public String toString() {

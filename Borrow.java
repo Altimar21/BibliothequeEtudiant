@@ -53,8 +53,8 @@ public class Borrow implements Serializable {
     }
 
     /**
-     * Affiche les information relative a l'emprunt
-     * @return
+     * Retourne les information relative a l'emprunt
+     * @return Information en String concatenés
      */
     public String display() {
         return  reader.getfName()                   + "\t" +
@@ -87,7 +87,7 @@ public class Borrow implements Serializable {
 
     /**
      * Retourne la date a laquelle l'emprunt devra être rendu
-     * @return
+     * @return Date (GregorianCalendar)
      */
     public GregorianCalendar getDateReturn(){
         GregorianCalendar dateReturn = (GregorianCalendar) dateRelease.clone();
@@ -126,7 +126,7 @@ public class Borrow implements Serializable {
 
     /**
      * Retourne le lecteur a qui apartient cet emprunt
-     * @return
+     * @return Lecteur (Reader)
      */
     private Reader getReader() {
         return reader;
@@ -134,13 +134,10 @@ public class Borrow implements Serializable {
 
     /**
      * Retourne l'exemplaire emprunté
-     * @return
+     * @return Exemplaire (Copy)
      */
     private Copy getCopy() {
         return copy;
     }
-
-
-
 
 }
