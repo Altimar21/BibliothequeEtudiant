@@ -6,9 +6,9 @@ public class MenuBiblio {
 	_bibliotheque = bibliotheque;
 	}
 	
-	/*
-	 * menuPrincipal permet � l'utilisateur de selectionner un type de sous menu (Reader, Ouvrage ou Exemplaire)
-	 * o� il effectuera par la suite l'action d�sir�e. Si l'utilisateur a fini d'utiliuser le programme, il choisit l'option Quitter.
+	/**
+	 * menuPrincipal permet à l'utilisateur de selectionner un type de sous menu (Lecteur, Livre ou Exemplaire)
+	 * il effectuera par la suite l'action desiree. Si l'utilisateur a fini d'utiliuser le programme, il choisit l'option Quitter.
 	*/
 public void menuPrincipal() {
 	Integer menu;
@@ -44,8 +44,8 @@ public void menuPrincipal() {
 	} while (menu != 0);	
 }
 
-	/* menuLect permet d'effectuer une s�rie d'action concernant les utilisateur (lecteurs) de la biblioth�que.
-	 * Une fois une action effectu�e, l'utilisateur sera rediriger vers ce m�me menu afin de pouvoir selectionner
+	/** menuLect permet d'effectuer une serie d'action concernant les utilisateur (lecteurs) de la biblioth�que.
+	 * Une fois une action effectuee, l'utilisateur sera rediriger vers ce meme menu afin de pouvoir selectionner
 	 * une nouvelle fois une action concernant les lecteurs.
 	 * "Retour Menu Principal" renvoi l'utilisateur au menu principal.
 	*/
@@ -82,6 +82,12 @@ public void menuLecteur() {
 	} while (menuLect != 0);	
 }
 
+	/**
+	 * menuEmprunt permet d'effectuer serie d'action concernant les emprunts (borrow) de la bibliotheque.
+     * Une fois une action effectuee, l'utilisateur sera rediriger vers ce même menu afin de pouvoir selectionner
+     * une nouvelle fois une action concernant les emprunts.
+     * "Retour Menu Principal" renvoi l'utilisateur au menu principal.
+	 */
     public void menuEmprunt() {
         Integer menuEmprunt;
         do {
@@ -126,7 +132,14 @@ public void menuLecteur() {
         } while (menuEmprunt != 0);
     }
 
-	public void menuBook() {
+    /**
+     * menuBook permet d'effectuer serie d'action concernant les livres (book) de la bibliotheque.
+     * Une fois une action effectuee, l'utilisateur sera rediriger vers ce même menu afin de pouvoir selectionner
+     * une nouvelle fois une action concernant les livres.
+     * "Retour Menu Principal" renvoi l'utilisateur au menu principal.
+     *
+     */
+    public void menuBook() {
 		Integer menuBook;
 		do {
 			EntreesSorties.afficherMessage(" ========================================================");

@@ -22,11 +22,11 @@ public class Borrow implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Crée un emprunt
+     * Cree un emprunt
      *
-     * @param reader
-     * @param copy
-     * @param dateRelease
+     * @param reader Lecteur lie a cet emprunt
+     * @param copy Exemplaire lie a cet emprunt
+     * @param dateRelease date de l'emprunt
      */
     public Borrow(Reader reader, Copy copy, GregorianCalendar dateRelease) {
         this.reader = reader;
@@ -43,7 +43,10 @@ public class Borrow implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Suprime un emprunt,
+     * Suprime un emprunt.
+     * Delie le lecteur de l'emprunt, l'exmplaire de l'emprunt et remet
+     * a NULL le lien du lecteur de l'exemplaire. #carbage_collector
+     *
      */
     public void removeBorrow(){
         this.getReader().removeBorrow(this);
@@ -53,8 +56,8 @@ public class Borrow implements Serializable {
     }
 
     /**
-     * Retourne les information relative a l'emprunt
-     * @return Information en String concatenés
+     * Retourne les informations non detaillees relative a l'emprunt
+     * @return (String)
      */
     public String display() {
         return  reader.getfName()                   + "\t" +
@@ -67,7 +70,7 @@ public class Borrow implements Serializable {
     }
 
     /**
-     * Affiche les information détaillé de l'emprunt
+     * Affiche les informations detaillees de l'emprunt
      */
     public void displayAll(){
         EntreesSorties.afficherMessage("Lecteur             : " + reader.getAllName());
@@ -86,7 +89,7 @@ public class Borrow implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Retourne la date a laquelle l'emprunt devra être rendu
+     * Retourne la date a laquelle l'emprunt devra etre rendu
      * @return Date (GregorianCalendar)
      */
     public GregorianCalendar getDateReturn(){
@@ -105,8 +108,8 @@ public class Borrow implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Lie un lecteur a l'emprunt
-     * @param reader
+     * Lie le lecteur a l'emprunt
+     * @param reader lecteur
      */
     private void setReader(Reader reader) {
         this.reader = reader;
@@ -114,7 +117,7 @@ public class Borrow implements Serializable {
 
     /**
      * Lie un exemplaire a un ouvrage
-     * @param copy
+     * @param copy Exemplaire
      */
     private void setCopy(Copy copy) {
         this.copy = copy;
@@ -125,7 +128,7 @@ public class Borrow implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Retourne le lecteur a qui apartient cet emprunt
+     * Retourne le lecteur lie a cet emprunt
      * @return Lecteur (Reader)
      */
     private Reader getReader() {
@@ -133,7 +136,7 @@ public class Borrow implements Serializable {
     }
 
     /**
-     * Retourne l'exemplaire emprunté
+     * Retourne l'exemplaire lie a cet emprunt
      * @return Exemplaire (Copy)
      */
     private Copy getCopy() {

@@ -23,12 +23,12 @@ public class Copy implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Crée un exemplaire.
+     * Cee un exemplaire
      *
-     * @param borrCopy boolean
-     * @param dateRecep GregorianCalendar
-     * @param idCopy iny
-     * @param book Book
+     * @param borrCopy Exemplaire empruntable ou non (true ou false)
+     * @param dateRecep Date de reception de l'exemplaire (GregorianCalendar)
+     * @param idCopy Identifiant de l'exemplaire (int)
+     * @param book Livre auquel l'exemplaire fais reference (book)
      */
     public Copy(boolean borrCopy, GregorianCalendar dateRecep, int idCopy, Book book) {
         this.borrCopy = borrCopy;
@@ -48,9 +48,9 @@ public class Copy implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Modifie l'emprunt de cet exemplaire
+     * Lie l'exemplaire e un emprunt
      *
-     * @param borrow
+     * @param borrow Emprunt (borrow)
      */
     public void setBorrow(Borrow borrow) {
         this.borrow = borrow;
@@ -62,14 +62,14 @@ public class Copy implements Serializable {
     /**
      * Retourne l'identifiant de l'exemplaire
      *
-     * @return id Exemplaire
+     * @return Identifiant de l'exemplaire (int)
      */
     public int getIdCopy() {
         return idCopy;
     }
 
     /**
-     * Retourne l'emprunt fais sur cet exemplaire
+     * Retourne l'emprunt fait sur cet exemplaire
      *
      * @return Emprunt (borrow)
      */
@@ -79,7 +79,7 @@ public class Copy implements Serializable {
 
 
     /**
-     * Retourne le livre lier a cet exemplaire
+     * Retourne le livre lie a cet exemplaire
      *
      * @return Livre (Book)
      */
@@ -96,7 +96,7 @@ public class Copy implements Serializable {
     /**
      * Retourne l'etat de l'emprunt de l'exemplaire
      *
-     * @return true ou false si emprunté
+     * @return boolean (true ou false si emprunte)
      */
     public boolean isBorrCopy() {
         return borrCopy;
@@ -105,12 +105,12 @@ public class Copy implements Serializable {
     /**
      * Retourne les details de l'exemplaire
      *
-     * @return concaténation de string
+     * @return String
      */
     @Override
     public String toString() {
         return "Detail exemplaire    : " +"\n" +
-                "empruntable  : " + BooltoString(borrCopy) + "\n" +
+                "empruntable  : " + BooltoString() + "\n" +
                 "dateRecep    : " + EntreesSorties.ecrireDate(dateRecep) +"\n" +
                 "idExemplaire : " + idCopy ;
     }
@@ -124,12 +124,11 @@ public class Copy implements Serializable {
     // -----------------------------------------------
 
     /**
+     * Methode pour l'affiche
      * Retourne "Oui" si b = true ou "Non" si b = false
-     *
-     * @param  b
-     * @return retourne le string correspondant au booleen
+     * @return retourne le string correspondent au booleen
      */
-    private String BooltoString(boolean b){
+    private String BooltoString(){
         if(borrCopy){
             return "Oui";
         }

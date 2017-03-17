@@ -16,20 +16,21 @@ public class Bibliotheque implements Serializable
 	// -----------------------------------------------
     //Attributs
 	// -----------------------------------------------
+
 		private int lastNumReader = 0;
 		private HashMap<Integer, Reader> _dicoLecteur;
 		private HashMap<Integer, Book> _dicoBook;
-		/*
-		 * Le dictionnaire de lecteur permet à bibliotheque de 
-		 * garantir l'unicité de ces derniers, et facilitent les recherches et créations.
-		 */
+
 	
 	// -----------------------------------------------
     //Constructeur
 	// -----------------------------------------------
-	
 
-		public Bibliotheque() {
+        /**
+         * Permet de cree une bibliotheque contenant une base de donnee de Livre (Reader) et de Lecteur (Reader)
+         * La base de donnee est modilisee sous la forme de deux HashMaps
+         */
+        public Bibliotheque() {
 			this.setReader(new HashMap<Integer, Reader>());
             this.setHashBook(new HashMap<Integer, Book>());
 		}
@@ -43,13 +44,13 @@ public class Bibliotheque implements Serializable
 		// -----------------------------------------------
 
 		/**
-		 * La méthode nouveauLecteur permet de créé un lecteur en demandant la saisie de son numéro
-		 * nom, prénom, date de naissance, adresse et numéro de téléphone.
-		 * L'age doit être compris entre 3 et 110 ans
-		 * Le lecteur est identifié par son numéro, si celui ci existe déjà dans le dictionnaire
-		 * de bibliothèque, un message d'erreur est affiché.
-		 * Une fois le nouveau lecteur créé, il est ajouté au dictionnaire de lecteur
-		 * afin de garantir la cohérence des données.
+		 * La methode nouveauLecteur permet de cree un lecteur en demandant la saisie de son numero
+		 * nom, prenom, date de naissance, adresse et numero de telephone.
+		 * L'age doit etre compris entre 3 et 110 ans
+		 * Le lecteur est identifie par son numero, si celui ci existe deja dans le dictionnaire
+		 * de bibliotheque, un message d'erreur est affiche.
+		 * Une fois le nouveau lecteur cree, il est ajoute au dictionnaire de lecteur
+		 * afin de garantir la coherence des donnees.
 		 */
 	public void newReader() {
 		Integer numReader = lastNumReader + 1;
@@ -106,13 +107,11 @@ public class Bibliotheque implements Serializable
         }
 	}
 
-
-
 	/**
-	 * La méthode consulterLecteur permet d'afficher l'ensemble des informations relatives à
-	 * un lecteur, par la saisie de son identifiant (numéro de lecteur).
-	 * Si le numéro de lecteur n'est pas dans la base de données de bibliotheque un message d'erreur est
-	 * renvoyé a l'utilisateur.
+	 * La methode consulterLecteur permet d'afficher l'ensemble des informations relatives a
+	 * un lecteur, par la saisie de son identifiant (numero de lecteur).
+	 * Si le numero de lecteur n'est pas dans la base de donnees de bibliotheque un message d'erreur est
+	 * renvoye a l'utilisateur.
 	 */
 	public void consultReader()
 	{
@@ -142,7 +141,7 @@ public class Bibliotheque implements Serializable
 	}
 
     /**
-     * Ajoute un livre dans la liste. Il faut renseigné tout les details de celui-ci
+     * Ajoute un livre dans la liste. Il faut renseigne tout les details de celui-ci
      */
 	public void newBook(){
 		Integer ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
@@ -198,7 +197,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Permet a un lecteur d'emprunté un exemplaire d'un livre
+     * Permet a un lecteur d'emprunte un exemplaire d'un livre
      */
     public void borrCopy() {
         Integer NumReader = EntreesSorties.lireEntier("Entrer le numero du lecteur :");
@@ -250,7 +249,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Permet de rendre un exemplaire emprunté par un lecteur
+     * Permet de rendre un exemplaire emprunte par un lecteur
      */
     public void returnCopy(){
         Integer NumReader = EntreesSorties.lireEntier("Entrez le numero du lecteur :");
@@ -356,15 +355,15 @@ public class Bibliotheque implements Serializable
 
 
 	// -----------------------------------------------
-		// Mï¿½thodes
+		// Méthodes
 	// -----------------------------------------------
 
 	/**
-	 * La méthode unLecteur permet de rechercher dans la base de donnée de bibliotheque un objet
-	 * lecteur identifié par son numéro, et de renvoyer l'objet. (ou la donnée null s'il n'est pas trouvé)
+	 * La methode unLecteur permet de rechercher dans la base de donnee de bibliotheque un objet
+	 * lecteur identifie par son numero, et de renvoyer l'objet. (ou la donnee null s'il n'est pas trouve)
 	 *
      *
-	 * La méthode setReader permet d'ajouter un lecteur a la base de donnée de bibliotheque.
+	 * La methode setReader permet d'ajouter un lecteur a la base de donnee de bibliotheque.
 	 */
 	private void setReader(Reader L, Integer numReader)
 	{
@@ -376,7 +375,7 @@ public class Bibliotheque implements Serializable
 
 
 	/**
-	 * La méthode lesLecteurs permet de créer un iterator sur les lecteurs, dans le but de les parcourir
+	 * La mehode lesLecteurs permet de creer un iterator sur les lecteurs, dans le but de les parcourirs
 	 * pour eventuellement les relancer.
 	 */
 	private Iterator<Reader> lesLecteurs() {
@@ -386,10 +385,23 @@ public class Bibliotheque implements Serializable
 	// -----------------------------------------------
 	// Getter
 	// -----------------------------------------------
+
+    /**
+     * Trouve et retourne le livre dans le dictionaire en fonction de son
+     * numero ISBN
+     * @param ISBN (int)
+     * @return Livre (Book)
+     */
 	private Book getBook(Integer ISBN){
 		return _dicoBook.get(ISBN);
 	}
 
+    /**
+     * Trouve et retourne un lecteur dans le dictionaire en fonction de son
+     * numero lecteur
+     * @param NumReader Numero lecteur (int)
+     * @return Lecteur (Reader)
+     */
 	private Reader getReader(Integer NumReader){
 	    return _dicoLecteur.get(NumReader);
     }

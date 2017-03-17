@@ -31,14 +31,14 @@ public class Reader implements Serializable
 	// -----------------------------------------------
 
 	/**
-	 * Crée un Lecteur
+	 * Cree un Lecteur
 	 *
-	 * @param fName
-	 * @param lName
-	 * @param numReader
-	 * @param dateNaiss
-	 * @param adress
-	 * @param tel
+	 * @param fName Prenom du lecteur
+	 * @param lName	Nom du lecteur
+	 * @param numReader Numero du lecteur
+	 * @param dateNaiss	Date de naissance du lecteur
+	 * @param adress adresse postal du lecteur
+	 * @param tel Numero du lecteur
 	 */
 		public Reader(String fName, String lName, Integer numReader, GregorianCalendar dateNaiss, String adress, String tel)
 		{
@@ -61,8 +61,8 @@ public class Reader implements Serializable
     // -----------------------------------------------
 
     /**
-     * Permet d'ajouté un emprunt a la liste de ce lecteur
-     * @param copy
+     * Permet d'ajoute un emprunt a la liste d'emprunt de ce lecteur
+     * @param copy Emprunt
      */
     public void setBorrow(Copy copy){
         borrow.add(new Borrow(this,copy, new GregorianCalendar()));
@@ -76,7 +76,7 @@ public class Reader implements Serializable
 
 
 		/**
-		 * Retourne le nombre d'emprunt du lecteur
+		 * Retourne le nombre d'emprunt effectue par le lecteur
 		 *
 		 * @return Nombre d'emprunt (int)
 		 */
@@ -103,16 +103,16 @@ public class Reader implements Serializable
 		}
 
 		/**
-		 * Retourne le numero de ce Lecteur
+		 * Retourne le numero du Lecteur
          *
-		 * @return Numero Lecteur
+		 * @return Numero Lecteur (int)
 		 */
 		public int getNumReader() { return numReader; }
 
 		/**
-		 * Retourne le tableau contenant tout les emprunts effectués par ce lecteur
+		 * Retourne le tableau contenant tout les emprunts effectues par le lecteur
          *
-		 * @return Tableau emprunt lecteur (Vector<Borrow>)
+		 * @return Tableau emprunt lecteur (Vector)
 		 */
 		public Vector<Borrow> getBorrow() {
         return borrow;
@@ -131,12 +131,13 @@ public class Reader implements Serializable
     // -----------------------------------------------
     // Methodes
     // -----------------------------------------------
-		
 
 
-		/**
-		 * La méthode afficherLecteur display l'ensemble des informations relatives � un lecteur.
-		 */
+
+		/*
+		 * La methode afficherLecteur display l'ensemble des informations relatives a un lecteur.
+		 *
+		/*
 		public void printReader()
 			{
 
@@ -147,11 +148,11 @@ public class Reader implements Serializable
 				System.out.println("Telephone : " + tel);
 				EntreesSorties.afficherMessage("");
 			}
+		*/
 
-		
 		/**
-		 * la m�thode calculAge permet de d�terminer l'age des lecteurs grace a leur date de naissance
-		 * et la date actuelle. De cette fa�on, il n'y a pas de mise a jour a faire sur l'age des lecteurs.
+		 * la methode calculAge permet de determiner l'age des lecteurs grace a leur date de naissance
+		 * et la date actuelle. De cette facon, il n'y a pas de mise a jour a faire sur l'age des lecteurs.
 		 */
 		public Integer calculAge() {
 			Integer age;
@@ -169,33 +170,11 @@ public class Reader implements Serializable
 
 		/**
 		 * La methode suprime un emprunt de la liste.
-		 * Elle est exucuté lorsque toute les conditions pour rendre un exemplaire sont remplies
-		 * @param borrow
+		 * Elle est execute lorsque toutes les conditions pour rendre un exemplaire sont remplies
+		 * @param borrow Exemplaire
 		 */
 		public void removeBorrow(Borrow borrow){
 				this.borrow.remove(borrow);
-        }
-	
-// -----------------------------------------------
-	// Private
-// -----------------------------------------------
-
-		// -----------------------------------------------
-			//Setters
-		// -----------------------------------------------
-
-
-		/**
-		 * Retourne sous la forme de String tout les emprunt du lecteur
-		 * @return
-		 */
-		private String printBorrow(){
-				String r = "";
-				System.out.println(borrow.size());
-				for(int i  = 0; i <= borrow.size();i++){
-					r = r + borrow.get(i).toString();
-				}
-				return r;
         }
 
     /**
@@ -205,7 +184,7 @@ public class Reader implements Serializable
         String r = "";
         if(!borrow.isEmpty()) {
             for (Borrow aBorrow : borrow) {
-              r = r + aBorrow.display();
+                r = r + aBorrow.display();
             }
         }else{
             r =  "Aucun emprunt";
@@ -220,4 +199,27 @@ public class Reader implements Serializable
                 "Emprunt   : " + r + "\n" );
 
     }
+	
+// -----------------------------------------------
+	// Private
+// -----------------------------------------------
+
+		// -----------------------------------------------
+			//Setters
+		// -----------------------------------------------
+
+
+		/**
+		 * Retourne sous la forme de String tout les emprunt du lecteur
+		 * @return
+		 */
+		/*
+		private String printBorrow(){
+				String r = "";
+				System.out.println(borrow.size());
+				for(int i  = 0; i <= borrow.size();i++){
+					r = r + borrow.get(i).toString();
+				}
+				return r;
+        }*/
 }

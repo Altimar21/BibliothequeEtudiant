@@ -20,7 +20,7 @@ public class Book implements Serializable {
     private int numISBN;
     private String title;
     private Publiclec publicc;
-    private int nbCopy;
+  //  private int nbCopy;
     private int lastIdCopy;
     private Vector<Copy> copy;
 
@@ -29,14 +29,14 @@ public class Book implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Crée un Livre.
+     * Cree un Livre.
      *
-     * @param author
-     * @param dateRelease
-     * @param editor
-     * @param numISBN
-     * @param title
-     * @param publicc
+     * @param author auteur (String)
+     * @param dateRelease date d'ajout (GregorianCalendar)
+     * @param editor editeur (String)
+     * @param numISBN ISBN (int)
+     * @param title Titre livre (String)
+     * @param publicc Type de public (Enum : Enfant, Ado, Adulte)
      */
     public Book(String author, GregorianCalendar dateRelease, String editor, int numISBN, String title, Publiclec publicc) {
         this.author = author;
@@ -60,9 +60,9 @@ public class Book implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Affiche les données d'un exemplaire a partir de son identifiant
+     * Affiche les donnees d'un exemplaire a partir de son identifiant
      *
-     * @param idCopy
+     * @param idCopy identifiant de l'exmplaire (int)
      */
     public void PrintCopy(int idCopy){
         Copy c = getCopy(idCopy);
@@ -77,7 +77,7 @@ public class Book implements Serializable {
     /**
      * Retourne le nombre d'exmplaire empruntable
      *
-     * @return nombre exemplaires
+     * @return nombre exemplaires (int)
      */
     public int nbBorrCopy(){
         int count = 0;
@@ -92,8 +92,8 @@ public class Book implements Serializable {
     /**
      * Ajoute un exemplaire de ce livre
      *
-     * @param borrCopy
-     * @param dateRecep
+     * @param borrCopy Exemplaire empruntable ou non (true or false)
+     * @param dateRecep Date de reception de l'exemplaire (GregorianCalendar)
      */
     public void addCopy(boolean borrCopy, GregorianCalendar dateRecep){
         lastIdCopy++;
@@ -102,6 +102,7 @@ public class Book implements Serializable {
 
     /**
      * Affiche les details du livre
+     *
      */
     public void display() {
         System.out.println( "Detail livre : "            + "\n" +
@@ -119,9 +120,9 @@ public class Book implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Retourne l'exemplaire lier a un identifiant
-     * @param idCopy
-     * @return Copy
+     * Retourne l'exemplaire lie a un identifiant
+     * @param idCopy identifiant de l'exemplaire (int)
+     * @return Exemplaire (Copy)
      */
     public Copy getCopy(int idCopy){
         for (int i = 0; i <= copy.size() ;i++){
@@ -134,7 +135,7 @@ public class Book implements Serializable {
 
 
     /**
-     * Retourne true si il y a des exemplaire de ce livre en stock
+     * Retourne "true" si il y a des exemplaires de ce livre en stock
      *
      * @return true ou false
      */
@@ -145,7 +146,7 @@ public class Book implements Serializable {
     /**
      * Retourne l'identifiant du premier exemplaire empruntable
      * 
-     * @return identifiant d'un exemplaire
+     * @return identifiant d'un exemplaire (int)
      */
     public int getfirstBorrCoppy() {
         for (int i = 0; i <= copy.size(); i++) {
@@ -157,9 +158,9 @@ public class Book implements Serializable {
     }
 
     /**
-     * Retourne le type de publique lier a ce livre
+     * Retourne le type de publique lie a ce livre
      *
-     * @return le publique
+     * @return le publique (Enum)
      */
     public Publiclec getPublicc() {
         return publicc;
@@ -168,7 +169,7 @@ public class Book implements Serializable {
     /**
      * Retourne le numero ISBN de ce livre
      *
-     * @return ISBN
+     * @return ISBN (int)
      */
     public int getNumISBN() {
         return numISBN;
@@ -177,7 +178,7 @@ public class Book implements Serializable {
     /**
      * Retourne le titre de ce livre
      *
-     * @return Titre
+     * @return Titre (String)
      */
     public String getTitle() {
         return title;
@@ -191,11 +192,11 @@ public class Book implements Serializable {
 
 
     /**
-     * Permet d'ajouter un exemplaire
+     * Permet d'ajoute un exemplaire. Elle lie l'exemplaire au livre
      *
-     * @param borrCopy
-     * @param dateRecep
-     * @param idCopy
+     * @param borrCopy Exemplaire empruntable ou non (true or false)
+     * @param dateRecep Date de reception de l'exemplaire (GregorianCalendar)
+     * @param idCopy identifiant de l'exemplaire (int)
      */
     private void setCopy(boolean borrCopy, GregorianCalendar dateRecep, int idCopy){
         this.copy.add(new Copy(borrCopy,dateRecep,idCopy, this));
