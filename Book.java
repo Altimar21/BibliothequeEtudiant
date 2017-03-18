@@ -20,7 +20,6 @@ public class Book implements Serializable {
     private int numISBN;
     private String title;
     private Publiclec publicc;
-  //  private int nbCopy;
     private int lastIdCopy;
     private Vector<Copy> copy;
 
