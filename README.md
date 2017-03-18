@@ -9,10 +9,6 @@ Réalisation de l'analyse et la conception d'un système d'information pour la
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 
-## History
-
-TODO: Write history
-
 ## Credits
 
 Julien Viala
