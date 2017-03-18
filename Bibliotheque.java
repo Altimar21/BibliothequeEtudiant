@@ -284,18 +284,25 @@ public class Bibliotheque implements Serializable
         EntreesSorties.afficherMessage("Exemplaire rendu");
     }
 
-    public void consultBorrowReader(){
+    public void consultBorrReader(){
         int numReader = EntreesSorties.lireEntier("Numéro de lecteur : ");
         Reader reader = getReader(numReader);
         if (reader == null){
             System.out.println("Le numero "+ numReader + "ne correspond a aucun lecteur connu");
             return;
         }
+        int R = EntreesSorties.lireEntier("Voulez-vous crée un Lecteur ?");
+
+        if (R == 1){
+            newReader();
+        }
 
         if(reader.getNbBorrow() == 0){
             System.out.println("Aucun emprunt effectué par ce lecteur");
             return;
         }
+
+
         for (Borrow b : reader.getBorrow()){
            System.out.println(b.display());
         }

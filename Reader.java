@@ -133,23 +133,6 @@ public class Reader implements Serializable
     // -----------------------------------------------
 
 
-
-		/*
-		 * La methode afficherLecteur display l'ensemble des informations relatives a un lecteur.
-		 *
-		/*
-		public void printReader()
-			{
-
-				System.out.println("Numero lecteur : " + numReader);
-				System.out.println("Nom et prenom du lecteur: " + getAllName());
-				System.out.println("Age : " + this.calculAge() + " ans");
-				System.out.println("Adresse : " + adress);
-				System.out.println("Telephone : " + tel);
-				EntreesSorties.afficherMessage("");
-			}
-		*/
-
 		/**
 		 * la methode calculAge permet de determiner l'age des lecteurs grace a leur date de naissance
 		 * et la date actuelle. De cette facon, il n'y a pas de mise a jour a faire sur l'age des lecteurs.
@@ -199,27 +182,5 @@ public class Reader implements Serializable
                 "Emprunt   : " + r + "\n" );
 
     }
-	
-// -----------------------------------------------
-	// Private
-// -----------------------------------------------
 
-		// -----------------------------------------------
-			//Setters
-		// -----------------------------------------------
-
-
-		/**
-		 * Retourne sous la forme de String tout les emprunt du lecteur
-		 * @return
-		 */
-		/*
-		private String printBorrow(){
-				String r = "";
-				System.out.println(borrow.size());
-				for(int i  = 0; i <= borrow.size();i++){
-					r = r + borrow.get(i).toString();
-				}
-				return r;
-        }*/
 }

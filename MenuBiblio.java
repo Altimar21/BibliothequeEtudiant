@@ -114,7 +114,7 @@ public void menuLecteur() {
                     break;
                 }
                 case 3:{
-                    _bibliotheque.consultBorrowReader();
+                    _bibliotheque.consultBorrReader();
                     break;
                 }
                 case 4:{
