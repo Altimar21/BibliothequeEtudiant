@@ -146,7 +146,7 @@ public void menuLecteur() {
             EntreesSorties.afficherMessage("|                        Menu Livre                      |");
             EntreesSorties.afficherMessage("|                                                        |");
 			EntreesSorties.afficherMessage("| Ajout d'un livre               : 1                     |");
-			EntreesSorties.afficherMessage("| Consulter un livre             : 2                     |");
+			EntreesSorties.afficherMessage("| Consulter detail d'un livre    : 2                     |");
 			EntreesSorties.afficherMessage("| Ajout d'un  exemplaire         : 3                     |");
 			EntreesSorties.afficherMessage("| Consulter un exemplaire        : 4                     |");
             EntreesSorties.afficherMessage("| Consulter tout les Livre       : 5                     |");
