@@ -1,7 +1,6 @@
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * Classe de gestion de la Bibliotheque
@@ -402,21 +401,12 @@ public class Bibliotheque implements Serializable
     /**
      *
      * La methode setBook permet d'ajouter un livre a la base de donnee de livres.
-     * @param b
-     * @param ISBN
+     * @param b Livre (Book)
+     * @param ISBN  (int)
      */
     private void setBook(Book b, Integer ISBN){
         _dicoBook.put(ISBN,b);
     }
-
-
-	/**
-	 * La mehode lesLecteurs permet de creer un iterator sur les lecteurs, dans le but de les parcourirs
-	 * pour eventuellement les relancer.
-	 */
-	private Iterator<Reader> lesLecteurs() {
-		return _dicoLecteur.values().iterator();
-	}
 
 	// -----------------------------------------------
 	// Getter
