@@ -136,6 +136,7 @@ public class Reader implements Serializable
 		/**
 		 * la methode calculAge permet de determiner l'age des lecteurs grace a leur date de naissance
 		 * et la date actuelle. De cette facon, il n'y a pas de mise a jour a faire sur l'age des lecteurs.
+		 * @return Age (Integer)
 		 */
 		public Integer calculAge() {
 			Integer age;

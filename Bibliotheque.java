@@ -182,7 +182,7 @@ public class Bibliotheque implements Serializable
             return;
         }
 
-        int idCopy = EntreesSorties.lireEntier("Entrez l'idCopy :");
+        int idCopy = EntreesSorties.lireEntier("Entrez l'identifiant de l'exemplaire :");
 
         if(b.getCopy()){
             System.out.println("Aucun exemplaire n'est enregistré pour ce livre");
@@ -289,13 +289,14 @@ public class Bibliotheque implements Serializable
         Reader reader = getReader(numReader);
         if (reader == null){
             System.out.println("Le numero "+ numReader + "ne correspond a aucun lecteur connu");
-            return;
-        }
-        int R = EntreesSorties.lireEntier("Voulez-vous crée un Lecteur ?");
+        }else{
+            int R = EntreesSorties.lireEntier("Voulez-vous crée un Lecteur ? (Oui: 1, Non : 0)");
 
-        if (R == 1){
-            newReader();
+            if (R == 1){
+                newReader();
+            }
         }
+
 
         if(reader.getNbBorrow() == 0){
             System.out.println("Aucun emprunt effectué par ce lecteur");

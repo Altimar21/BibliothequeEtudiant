@@ -7,7 +7,7 @@ public class MenuBiblio {
 	}
 	
 	/**
-	 * menuPrincipal permet à l'utilisateur de selectionner un type de sous menu (Lecteur, Livre ou Exemplaire)
+	 * menuPrincipal permet a l'utilisateur de selectionner un type de sous menu (Lecteur, Livre ou Exemplaire)
 	 * il effectuera par la suite l'action desiree. Si l'utilisateur a fini d'utiliuser le programme, il choisit l'option Quitter.
 	*/
 public void menuPrincipal() {
@@ -56,7 +56,7 @@ public void menuLecteur() {
         EntreesSorties.afficherMessage("|                     Menu Lecteur                       |");
         EntreesSorties.afficherMessage("|                                                        |");
 		EntreesSorties.afficherMessage("| Nouveau Lecteur    	    : 1                          |");
-		EntreesSorties.afficherMessage("| Consulter Lecteur  	    : 2                          |");
+		EntreesSorties.afficherMessage("| Consulter detail Lecteur  : 2                          |");
         EntreesSorties.afficherMessage("| Consulter tous lecteurs   : 3                          |");
         EntreesSorties.afficherMessage("|                                                        |");
 		EntreesSorties.afficherMessage("| Retour Menu Principal     : 0                          |");
@@ -134,7 +134,7 @@ public void menuLecteur() {
 
     /**
      * menuBook permet d'effectuer serie d'action concernant les livres (book) de la bibliotheque.
-     * Une fois une action effectuee, l'utilisateur sera rediriger vers ce même menu afin de pouvoir selectionner
+     * Une fois une action effectuee, l'utilisateur sera rediriger vers ce meme menu afin de pouvoir selectionner
      * une nouvelle fois une action concernant les livres.
      * "Retour Menu Principal" renvoi l'utilisateur au menu principal.
      *
@@ -170,9 +170,11 @@ public void menuLecteur() {
 				}
 				case 4 : {
 					_bibliotheque.consultCopyBook();
+					break;
 				}
                 case 5 : {
                     _bibliotheque.consultListBook();
+                    break;
                 }
 				default : {
 					break;
