@@ -48,7 +48,7 @@ public class Copy implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Lie l'exemplaire e un emprunt
+     * Lie l'exemplaire a un emprunt
      *
      * @param borrow Emprunt (borrow)
      */
