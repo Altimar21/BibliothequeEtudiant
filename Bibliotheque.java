@@ -289,12 +289,12 @@ public class Bibliotheque implements Serializable
         Reader reader = getReader(numReader);
         if (reader == null){
             System.out.println("Le numero "+ numReader + "ne correspond a aucun lecteur connu");
-        }else{
             int R = EntreesSorties.lireEntier("Voulez-vous crée un Lecteur ? (Oui: 1, Non : 0)");
 
             if (R == 1){
                 newReader();
             }
+            return;
         }
 
 
