@@ -43,7 +43,7 @@ public class Borrow implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Suprime un emprunt.
+     * Supprime un emprunt.
      * Delie le lecteur de l'emprunt, l'exmplaire de l'emprunt et remet
      * a NULL le lien du lecteur de l'exemplaire. #carbage_collector
      *

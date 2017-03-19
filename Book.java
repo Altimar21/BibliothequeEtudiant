@@ -157,9 +157,9 @@ public class Book implements Serializable {
     }
 
     /**
-     * Retourne le type de publique lie a ce livre
+     * Retourne le type de public lie a ce livre
      *
-     * @return le publique (Enum)
+     * @return le public (Enum)
      */
     public Publiclec getPublicc() {
         return publicc;

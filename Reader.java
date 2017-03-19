@@ -61,7 +61,7 @@ public class Reader implements Serializable
     // -----------------------------------------------
 
     /**
-     * Permet d'ajoute un emprunt a la liste d'emprunt de ce lecteur
+     * Permet d'ajouter un emprunt a la liste d'emprunt de ce lecteur
      * @param copy Emprunt
      */
     public void setBorrow(Copy copy){
@@ -154,7 +154,7 @@ public class Reader implements Serializable
 
 		/**
 		 * La methode suprime un emprunt de la liste.
-		 * Elle est execute lorsque toutes les conditions pour rendre un exemplaire sont remplies
+		 * Elle est executee lorsque toutes les conditions pour rendre un exemplaire sont remplies
 		 * @param borrow Exemplaire
 		 */
 		public void removeBorrow(Borrow borrow){

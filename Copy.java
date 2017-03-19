@@ -23,12 +23,12 @@ public class Copy implements Serializable {
     // -----------------------------------------------
 
     /**
-     * Cee un exemplaire
+     * Cree un exemplaire
      *
      * @param borrCopy Exemplaire empruntable ou non (true ou false)
      * @param dateRecep Date de reception de l'exemplaire (GregorianCalendar)
      * @param idCopy Identifiant de l'exemplaire (int)
-     * @param book Livre auquel l'exemplaire fais reference (book)
+     * @param book Livre auquel l'exemplaire fait reference (book)
      */
     public Copy(boolean borrCopy, GregorianCalendar dateRecep, int idCopy, Book book) {
         this.borrCopy = borrCopy;
@@ -125,7 +125,7 @@ public class Copy implements Serializable {
 
     /**
      * Methode pour l'affiche
-     * Retourne "Oui" si b = true ou "Non" si b = false
+     * Retourne "Oui" si borrCopy = true ou "Non" si borrCopy = false
      * @return retourne le string correspondent au booleen
      */
     private String BooltoString(){

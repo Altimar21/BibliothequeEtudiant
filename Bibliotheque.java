@@ -26,7 +26,7 @@ public class Bibliotheque implements Serializable
 	// -----------------------------------------------
 
         /**
-         * Permet de cree une bibliotheque contenant une base de donnee de Livre (Reader) et de Lecteur (Reader)
+         * Permet de creer une bibliotheque contenant une base de donnee de Livre (Book) et de Lecteur (Reader)
          * La base de donnee est modilisee sous la forme de deux HashMaps
          */
         public Bibliotheque() {
@@ -43,11 +43,9 @@ public class Bibliotheque implements Serializable
 		// -----------------------------------------------
 
 		/**
-		 * La methode nouveauLecteur permet de cree un lecteur en demandant la saisie de son numero
+		 * La methode nouveauLecteur permet de creer un lecteur en demandant la saisie de son
 		 * nom, prenom, date de naissance, adresse et numero de telephone.
 		 * L'age doit etre compris entre 3 et 110 ans
-		 * Le lecteur est identifie par son numero, si celui ci existe deja dans le dictionnaire
-		 * de bibliotheque, un message d'erreur est affiche.
 		 * Une fois le nouveau lecteur cree, il est ajoute au dictionnaire de lecteur
 		 * afin de garantir la coherence des donnees.
 		 */
@@ -107,8 +105,8 @@ public class Bibliotheque implements Serializable
 	}
 
 	/**
-	 * La methode consulterLecteur permet d'afficher l'ensemble des informations relatives a
-	 * un lecteur, par la saisie de son identifiant (numero de lecteur).
+	 * La methode consultReader permet d'afficher l'ensemble des informations relatives a
+	 * un lecteur, par la saisie de son identifiant (numReader).
 	 * Si le numero de lecteur n'est pas dans la base de donnees de bibliotheque un message d'erreur est
 	 * renvoye a l'utilisateur.
 	 */
@@ -127,7 +125,7 @@ public class Bibliotheque implements Serializable
 	}
 
     /**
-     * Affiche les information relative a un livre
+     * Affiche les informations relative a un livre
      */
 	public void consultBook(){
 		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
@@ -140,7 +138,7 @@ public class Bibliotheque implements Serializable
 	}
 
     /**
-     * Ajoute un livre dans la liste. Il faut renseigne tout les details de celui-ci
+     * Ajoute un livre dans la liste. Il faut renseigner tout les details de celui-ci
      */
 	public void newBook(){
 		Integer ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
@@ -196,7 +194,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Permet a un lecteur d'emprunte un exemplaire d'un livre
+     * Permet a un lecteur d'emprunter un exemplaire d'un livre
      */
     public void borrCopy() {
         Integer NumReader = EntreesSorties.lireEntier("Entrer le numero du lecteur :");
@@ -284,7 +282,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Permet de consulte les emprunts d'un lecteurs
+     * Permet de consulter les emprunts d'un lecteurs
      */
     public void consultBorrReader(){
         int numReader = EntreesSorties.lireEntier("Numéro de lecteur : ");
@@ -312,7 +310,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Permet d'affiche tout les exemplaire non rendu qui on depasse la date
+     * Permet d'afficher tout les exemplaires non rendu qui ont depasse la date
      */
     public void reviveReader(){
         for (Reader r : _dicoLecteur.values()) {
@@ -331,7 +329,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Affiche tout les livre en stock
+     * Affiche tout les livres en stock
      */
     public void consultListBook(){
         for (Book b : _dicoBook.values()) {
@@ -340,7 +338,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * affiche tout les exemplaires empruntes
+     * Affiche tout les exemplaires empruntes
      */
     public void consultListBorrow(){
         for (Reader r : _dicoLecteur.values()) {
@@ -370,7 +368,7 @@ public class Bibliotheque implements Serializable
 	// -----------------------------------------------
 
     /**
-     * cree la base de donne des lecteurs
+     * Cree la base de donnee des lecteurs
      * @param dicoLecteur (Hashmap)
      */
 	private void setReader(HashMap<Integer, Reader> dicoLecteur) {
@@ -378,7 +376,7 @@ public class Bibliotheque implements Serializable
 	}
 
     /**
-     * cree la base de donne des livres
+     * Cree la base de donne des livres
      * @param dicoBook (Hashmap)
      */
     private void setHashBook(HashMap<Integer, Book> dicoBook){
@@ -402,7 +400,7 @@ public class Bibliotheque implements Serializable
      *
      * La methode setBook permet d'ajouter un livre a la base de donnee de livres.
      * @param b Livre (Book)
-     * @param ISBN  (int)
+     * @param ISBN  (Integer)
      */
     private void setBook(Book b, Integer ISBN){
         _dicoBook.put(ISBN,b);

@@ -21,7 +21,7 @@ public enum Publiclec {
 
     /**
      *
-     * @param name
+     * @param name String
      */
     Publiclec(String name){
         this.name = name;
