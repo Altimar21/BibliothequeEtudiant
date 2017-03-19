@@ -138,7 +138,7 @@ public class Bibliotheque implements Serializable
 	}
 
     /**
-     * Ajoute un livre dans la liste. Il faut renseigner tout les details de celui-ci
+     * Ajoute un livre dans la liste. Il faut renseigner tous les details de celui-ci
      */
 	public void newBook(){
 		Integer ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
@@ -310,7 +310,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Permet d'afficher tout les exemplaires non rendu qui ont depasse la date
+     * Permet d'afficher tous les exemplaires non rendu qui ont depasse la date
      */
     public void reviveReader(){
         for (Reader r : _dicoLecteur.values()) {
@@ -329,7 +329,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Affiche tout les livres en stock
+     * Affiche tous les livres en stock
      */
     public void consultListBook(){
         for (Book b : _dicoBook.values()) {
@@ -338,7 +338,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Affiche tout les exemplaires empruntes
+     * Affiche tous les exemplaires empruntes
      */
     public void consultListBorrow(){
         for (Reader r : _dicoLecteur.values()) {
@@ -351,7 +351,7 @@ public class Bibliotheque implements Serializable
     }
 
     /**
-     * Affiche tout les lecteurs de la base de donnee
+     * Affiche tous les lecteurs de la base de donnee
      */
     public void consultListReader(){
         for (Reader r : _dicoLecteur.values()) {
