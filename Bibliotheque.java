@@ -127,6 +127,8 @@ public class Bibliotheque implements Serializable
     /**
      * Affiche les informations relative a un livre
      */
+
+
 	public void consultBook(){
 		int ISBN = EntreesSorties.lireEntier("Entrez l'ISBN :");
         Book b = getBook(ISBN);
@@ -246,6 +248,58 @@ public class Bibliotheque implements Serializable
     }
 
     /**
+     * Permet de faire des emprunts anterieur a la date d'aujourd'hui
+     */
+    public void borrCopy2() {
+        Integer NumReader = EntreesSorties.lireEntier("Entrer le numero du lecteur :");
+        Reader reader = getReader(NumReader);
+
+
+        if (reader == null) {
+            System.out.println("Le lecteur n'existe pas");
+            return;
+        }
+
+        int ISBN = EntreesSorties.lireEntier("Entrez le numero ISBN :");
+        Book book = getBook(ISBN);
+
+        if (book == null) {
+            System.out.println("Le livre n'existe pas");
+            return;
+        }
+
+        if (book.getCopy()) {
+            System.out.println("Pas d'exemplaire de ce livre en stock");
+            return;
+        }
+
+        if (book.nbBorrCopy() == 0) {
+            System.out.println("Pas d'exemplaire empruntable");
+            return;
+        }
+
+        if (reader.getNbBorrow() > 5) {
+            System.out.println("Vous avez emprunté la maximum de livre (5)");
+            return;
+        }
+
+        Publiclec publicc = book.getPublicc();
+
+        if (publicc == Publiclec.ADULTE && reader.calculAge() < 16) {
+            System.out.println("Il faut être adulte pour emprunter ce livre");
+            return;
+        }
+
+        if (publicc == Publiclec.ADO && reader.calculAge() < 10) {
+            System.out.println("Il faut être ado pour emprunter ce livre");
+            return;
+        }
+        GregorianCalendar g = EntreesSorties.lireDate("Entrer une date d'emprunt");
+        reader.setBorrow(book.getCopy(book.getfirstBorrCoppy()),g);
+        EntreesSorties.afficherMessage("Exemplaire du livre " + ISBN + " emprunté");
+    }
+
+    /**
      * Permet de rendre un exemplaire emprunte par un lecteur
      */
     public void returnCopy(){
@@ -318,10 +372,10 @@ public class Bibliotheque implements Serializable
                 for (Borrow b : r.getBorrow()) {
                     GregorianCalendar now = new GregorianCalendar();
                     GregorianCalendar datereturn = b.getDateReturn();
-                    datereturn.add(GregorianCalendar.DAY_OF_MONTH, 8);
+                   // now.add(GregorianCalendar.DAY_OF_MONTH, -8);
                     if (datereturn.before(now)) {
                         EntreesSorties.ecrireDate(datereturn);
-                        b.display();
+                        System.out.println(b.display());
                     }
                 }
             }

@@ -99,6 +99,7 @@ public void menuLecteur() {
             EntreesSorties.afficherMessage("| Consulter emprunt Lecteur 	: 3                      |");
             EntreesSorties.afficherMessage("| Rappelle emprunt Lecteur   	: 4                      |");
             EntreesSorties.afficherMessage("| Consulter tout emprunt        : 5                      |");
+            EntreesSorties.afficherMessage("| emprunt inferieur             : 6                      |");
             EntreesSorties.afficherMessage("|                                                        |");
             EntreesSorties.afficherMessage("| Retour Menu Principal         : 0                      |");
             EntreesSorties.afficherMessage(" ========================================================");
@@ -123,6 +124,10 @@ public void menuLecteur() {
                 }
                 case 5:{
                     _bibliotheque.consultListBorrow();
+                    break;
+                }
+                case 6:{
+                    _bibliotheque.borrCopy2();
                     break;
                 }
                 default : {

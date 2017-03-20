@@ -68,6 +68,14 @@ public class Reader implements Serializable
         borrow.add(new Borrow(this,copy, new GregorianCalendar()));
         copy.setBorrow(this.borrow.lastElement());
     }
+    /**
+     * Permet d'ajouter un emprunt a la liste d'emprunt de ce lecteur
+     * @param copy Emprunt
+     */
+    public void setBorrow(Copy copy, GregorianCalendar g){
+        borrow.add(new Borrow(this,copy, g));
+        copy.setBorrow(this.borrow.lastElement());
+    }
 
 
     // -----------------------------------------------

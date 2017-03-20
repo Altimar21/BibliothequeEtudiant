@@ -97,8 +97,7 @@ public class Borrow implements Serializable {
         dateReturn.add(Calendar.DATE, 8);
         return dateReturn;
     }
-
-
+    
 
 // -----------------------------------------------
 // Private
